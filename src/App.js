@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AutoToTop from "./components/AutoToTop";
 import "./index.css";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/hotels" element={<Hotels />}></Route>
         <Route path="/cities" element={<Cities />}></Route>
+        <Route path="/e" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );
