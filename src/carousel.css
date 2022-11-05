@@ -1,0 +1,48 @@
+.btn-carousel {
+  font-size: 1rem;
+  background-color: #1f6e6b;
+  color: #eaf2f4;
+  border: 2px solid #1f6e6b;
+  border-radius: 2rem;
+  height: 10rem;
+  padding: 2rem;
+}
+.btn-carousel {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.btn-carousel:hover {
+  background-color: #eaf2f4;
+  color: #1f6e6b;
+  border: 2px solid #eaf2f4;
+}
+
+.conteinerCarousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.photoCarrusel {
+  width: 13rem;
+  height: 13rem;
+}
+
+.general {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  color: #eaf2f4;
+  padding-top: 4rem;
+}
+h2 {
+  background-color: #1f6e6b;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 2rem;
+}
