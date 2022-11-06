@@ -74,7 +74,7 @@ li {
   list-style-type: none;
 }
 
-.home1{
+.home1 {
   width: 100%;
   min-height: 100vh;
 }
@@ -141,6 +141,7 @@ li {
 
 .footer {
   display: flex;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
@@ -166,4 +167,24 @@ a {
   width: 54px;
   border-radius: 10px;
   font-weight: bolder;
+}
+.error {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #1f6e6b;
+  height: 90vh;
+  background-image: url(../src/img/forest.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.gohome {
+  margin-top: 9rem;
+  padding: 0.5rem;
+  color: #1f6e6b;
+  background-color: #eaf2f4;
+  font-weight: bolder;
+  border-radius: 10px;
 }
