@@ -27,7 +27,7 @@ export default function FormSignUp() {
     setEmail("");
     setPassword("");
 
-    document.getElementById("miFormulario").reset();
+    document.getElementById("myForm").reset();
   };
 
   const [registration, setRegistration] = useState(getRecord());
@@ -99,7 +99,8 @@ export default function FormSignUp() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="submitSing">
+          <div className="submit">
+          <button className="submit2">Login with Google</button>
             <button className="submit2">Register</button>
           </div>
         </div>
