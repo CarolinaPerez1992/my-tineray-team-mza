@@ -6,6 +6,7 @@ import AutoToTop from "./components/AutoToTop";
 import "./index.css";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import SignUp from './pages/SignUp'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/hotels" element={<Hotels />}></Route>
         <Route path="/cities" element={<Cities />}></Route>
         <Route path="/e" element={<NotFound />}></Route>
+        <Route path="/f" element={<SignUp/>}></Route>
       </Routes>
     </BrowserRouter>
   );
