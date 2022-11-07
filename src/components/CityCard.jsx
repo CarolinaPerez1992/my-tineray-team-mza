@@ -3,7 +3,7 @@ import "../card.css";
 
 export default function CityCard({ datos }) {
   return (
-    <div className="contenedor-card">
+    <div className="contenedor-card" id="container">
       <div className="card">
         <div className="card-img">
           <img src={datos.photo} alt={datos.name} />
