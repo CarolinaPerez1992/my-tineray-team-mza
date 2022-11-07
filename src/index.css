@@ -168,6 +168,12 @@ a {
   border-radius: 10px;
   font-weight: bolder;
 }
+.formnew {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+}
+
 .error {
   display: flex;
   flex-direction: column;
@@ -187,4 +193,25 @@ a {
   background-color: #eaf2f4;
   font-weight: bolder;
   border-radius: 10px;
+}
+@media screen and (max-width: 878px) {
+  .footer {
+    height: 15rem;
+  }
+
+  .glassform {
+    display: flex;
+    font-size: x-large;
+    gap: 0.5rem;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 80%;
+  }
 }

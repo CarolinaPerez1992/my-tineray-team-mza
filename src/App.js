@@ -22,8 +22,8 @@ function App() {
         <Route path="/e" element={<NotFound />}></Route>
         <Route path="/f" element={<SignUp />}></Route>
         <Route path="/in" element={<SignIn />}></Route>
-        <Route path="/nc" element={<NewCity />}></Route>
-        <Route path="/nh" element={<NewHotel />}></Route>
+        <Route path="/newcity" element={<NewCity />}></Route>
+        <Route path="/newhotel" element={<NewHotel />}></Route>
       </Routes>
     </BrowserRouter>
   );
