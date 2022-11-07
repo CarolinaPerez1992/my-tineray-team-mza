@@ -1,6 +1,6 @@
 .cont-card {
   width: 100%;
-  height: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -29,4 +29,19 @@
   height: 13rem;
   width: 100%;
   border-radius: 10px 10px 0px 0px;
+}
+
+.filter{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.check{
+  display: flex;
+  color: #eaf2f4;
+  background-color: #1f6e6b;
+  gap: 5px;
+  padding: 5px;
 }
