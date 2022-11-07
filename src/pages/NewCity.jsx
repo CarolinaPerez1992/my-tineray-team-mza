@@ -1,5 +1,4 @@
-import React from 'react'
-import Layout from '../layout/Layout'
+import React from "react";
 import { useState, useEffect } from "react";
 
 export default function NewCity() {
@@ -14,9 +13,9 @@ export default function NewCity() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let myObject = { name, continent, photo, population};
+    let myObject = { name, continent, photo, population };
     setRegistration([...registration, myObject]);
-    alert('You registered successfully!')
+    alert("You registered successfully!");
     limpiarFormulario();
   };
 
@@ -37,11 +36,11 @@ export default function NewCity() {
   const [population, setPopulation] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("registro", JSON.stringify(registration));
+    localStorage.setItem("NewCity", JSON.stringify(registration));
   }, [registration]);
 
   return (
-    <Layout>
+    <>
       <form onSubmit={handleSubmit} className="form" id="newCity">
         <div className="form-body">
           <h3 className="title">New City</h3>
@@ -84,6 +83,6 @@ export default function NewCity() {
           </div>
         </div>
       </form>
-    </Layout>
-  )
+    </>
+  );
 }

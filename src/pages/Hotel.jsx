@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../layout/Layout";
 import HotelCard from "../components/HotelCard";
 import hotels from "../data/hotels";
 import "../card.css";
@@ -10,7 +9,7 @@ export default function Hotel() {
   // let [hotelsFilters, setHotelsFilters] = useState([]);
   const searchId = useRef();
 
-  function filterSelect() {}
+  function filterSelect() {} //va el sort
 
   function filterSearch() {
     if (searchId.current.value !== "") {
@@ -24,7 +23,7 @@ export default function Hotel() {
     }
   }
   return (
-    <Layout>
+    <>
       <div className="filter">
         <div>
           <select name="orden" id="asydes" onChange={filterSelect}>
@@ -46,6 +45,6 @@ export default function Hotel() {
           <HotelCard datos={cadaPerfil} key={id} />
         ))}
       </div>
-    </Layout>
+    </>
   );
 }

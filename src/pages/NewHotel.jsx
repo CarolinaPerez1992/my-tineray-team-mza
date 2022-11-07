@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../layout/Layout";
 import { useState, useEffect } from "react";
 
 export default function NewHotel() {
@@ -37,11 +36,11 @@ export default function NewHotel() {
   const [cityid, setCityId] = useState("");
 
   useEffect(() => {
-    localStorage.setItem("registro", JSON.stringify(registration));
+    localStorage.setItem("NewHotel", JSON.stringify(registration));
   }, [registration]);
 
   return (
-    <Layout>
+    <>
       <form onSubmit={handleSubmit} className="form" id="newHotel">
         <div className="form-body">
           <h3 className="title">New Hotel</h3>
@@ -84,6 +83,6 @@ export default function NewHotel() {
           </div>
         </div>
       </form>
-    </Layout>
+    </>
   );
 }
