@@ -22,8 +22,12 @@ export default function Footer() {
       </div>
       <div className="foot">
         <CallToAction />
-        <Link to="/newhotel">New Hotel</Link>
-        <Link to="/newcity">New City</Link>
+        <Link to="/newhotel">
+          <p className="formnew">New Hotel</p>
+        </Link>
+        <Link to="/newcity">
+          <p className="formnew">New City</p>
+        </Link>
       </div>
     </div>
   );
