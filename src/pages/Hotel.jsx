@@ -1,14 +1,48 @@
 import React from "react";
 import Layout from "../layout/Layout";
 import HotelCard from "../components/HotelCard";
-import Hotels from "../data/hotels";
+import hotels from "../data/hotels";
 import "../card.css";
+// import { useState } from "react";
+import { useRef } from "react";
 
 export default function Hotel() {
+  // let [hotelsFilters, setHotelsFilters] = useState([]);
+  const searchId = useRef();
+
+  function filterSelect() {}
+
+  function filterSearch() {
+    if (searchId.current.value !== "") {
+      let hotelsFilters = hotels.filter((hotel) =>
+        hotel.name.toLowerCase().includes(searchId.current.value.toLowerCase())
+      );
+      console.log(hotelsFilters);
+      return hotelsFilters;
+    } else {
+      return hotels;
+    }
+  }
   return (
     <Layout>
+      <div className="filter">
+        <div>
+          <select name="orden" id="asydes" onChange={filterSelect}>
+            <option value="ascendent">Ascendent</option>
+            <option value="descent">Descendent</option>
+          </select>
+        </div>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search"
+            ref={searchId}
+            onChange={filterSearch}
+          />
+        </div>
+      </div>
       <div className="cont-card">
-        {Hotels.map((cadaPerfil, id) => (
+        {hotels.map((cadaPerfil, id) => (
           <HotelCard datos={cadaPerfil} key={id} />
         ))}
       </div>

@@ -1,10 +1,10 @@
 import "./App.css";
+import Home from "./pages/Home";
 import Cities from "./pages/Cities";
 import Hotel from "./pages/Hotel";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AutoToTop from "./components/AutoToTop";
 import "./index.css";
-import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
