@@ -1,6 +1,6 @@
 import "./App.css";
 import Cities from "./pages/Cities";
-import Hotels from "./pages/Hotels";
+import Hotel from "./pages/Hotel";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AutoToTop from "./components/AutoToTop";
 import "./index.css";
@@ -15,7 +15,7 @@ function App() {
       <AutoToTop />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/hotels" element={<Hotels />}></Route>
+        <Route path="/hotels" element={<Hotel />}></Route>
         <Route path="/cities" element={<Cities />}></Route>
         <Route path="/e" element={<NotFound />}></Route>
         <Route path="/f" element={<SignUp />}></Route>
