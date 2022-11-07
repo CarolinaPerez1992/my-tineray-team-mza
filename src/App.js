@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import NewCity from './pages/NewCity'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/e" element={<NotFound />}></Route>
         <Route path="/f" element={<SignUp />}></Route>
         <Route path="/in" element={<SignIn />}></Route>
+        <Route path="/nc" element={<NewCity />}></Route>
       </Routes>
     </BrowserRouter>
   );
