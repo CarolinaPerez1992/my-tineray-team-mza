@@ -2,6 +2,7 @@ import React from "react";
 import git from "../img/git.png";
 import CallToAction from "./CallToAction";
 import ScrollToTop from "./ScrollToTop";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -21,6 +22,8 @@ export default function Footer() {
       </div>
       <div className="foot">
         <CallToAction />
+        <Link to="/newhotel">New Hotel</Link>
+        <Link to="/newcity">New City</Link>
       </div>
     </div>
   );

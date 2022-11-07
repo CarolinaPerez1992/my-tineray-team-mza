@@ -8,7 +8,8 @@ import "./index.css";
 import NotFound from "./pages/NotFound";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import NewCity from './pages/NewCity'
+import NewCity from "./pages/NewCity";
+import NewHotel from "./pages/NewHotel";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/f" element={<SignUp />}></Route>
         <Route path="/in" element={<SignIn />}></Route>
         <Route path="/nc" element={<NewCity />}></Route>
+        <Route path="/nh" element={<NewHotel />}></Route>
       </Routes>
     </BrowserRouter>
   );
