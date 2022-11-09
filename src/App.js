@@ -11,6 +11,8 @@ import SignIn from "./pages/SignIn";
 import NewCity from "./pages/NewCity";
 import NewHotel from "./pages/NewHotel";
 import AutoToTop from "./components/AutoToTop";
+import DetailCity from "./pages/DetailCity"
+import DetailHotel from "./pages/DetailHotel";
 
 function App() {
   return (
@@ -26,6 +28,9 @@ function App() {
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/newcity" element={<NewCity />}></Route>
           <Route path="/newhotel" element={<NewHotel />}></Route>
+          <Route path="/detailcity/:id" element={<DetailCity/>}></Route>
+          <Route path="/detailhotel/:id" element={<DetailHotel/>}></Route>
+
         </Routes>
       </Layout>
     </BrowserRouter>

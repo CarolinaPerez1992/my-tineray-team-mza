@@ -1,5 +1,7 @@
 import React from "react";
 import "../card.css";
+import { Link } from "react-router-dom"
+
 export default function HotelCard(props) {
   let { datos } = props;
   console.log(datos);
@@ -11,6 +13,9 @@ export default function HotelCard(props) {
         </div>
         <div className="sub-card">
           <h3>{datos.name}</h3>
+          <Link to={`/detailhotel/${datos.id}`}>
+            <button>More details</button>
+          </Link>
         </div>
       </div>
     </div>
