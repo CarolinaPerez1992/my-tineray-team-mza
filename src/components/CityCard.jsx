@@ -1,5 +1,6 @@
 import React from "react";
 import "../card.css";
+import { Link } from "react-router-dom"
 
 export default function CityCard({ datos }) {
   return (
@@ -12,6 +13,9 @@ export default function CityCard({ datos }) {
           <h3>{datos.name}</h3>
           <p>Continent: {datos.continent}</p>
           <p>Population: {datos.population}</p>
+          <Link to={`/detailcity/${datos.id}`}>
+            <button>More details</button>
+          </Link>
         </div>
       </div>
     </div>
