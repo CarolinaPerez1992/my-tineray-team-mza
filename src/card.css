@@ -5,21 +5,11 @@
   flex-direction: row;
   text-align: center;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   padding-top: 4rem;
 }
-.card {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 20rem;
-  height: 22rem;
-  gap: 2rem;
-  border-radius: 10px;
-  background-color: #1f6e6b;
-  color: #eaf2f4;
-}
+
 .contenedor-card {
   height: 25rem;
   width: 25rem;
@@ -31,14 +21,14 @@
   border-radius: 10px 10px 0px 0px;
 }
 
-.filter{
+.filter {
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
 }
-.check{
+.check {
   display: flex;
   color: #eaf2f4;
   background-color: #1f6e6b;

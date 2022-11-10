@@ -1,0 +1,39 @@
+.cardEvents {
+  display: flex;
+}
+
+.cardDetPadre {
+  display: flex;
+  height: 40rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardDet {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 25rem;
+  width: 70rem;
+  background-color: aqua;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px #000;
+}
+
+.contimg {
+  height: 100%;
+  width: 50%;
+  object-fit: contain;
+}
+.contimg > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.cardinfo {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+}

@@ -1,20 +1,23 @@
-import React from 'react'
-
+import React from "react";
+import "../shows.css";
 export default function Show(props) {
+  let { show } = props;
+  console.log(show);
 
-    let {show} = props
-    console.log(show)
-
-    return (
-    
-        <div className='MainShow'>
-            <div className='left-mh'>
-                <img class='img-mh' src={show.photo} alt={show.name} />
-            </div>
-            <div className='right-mh'>
-                <p>{show.name} </p>
-                <p>{show.date}</p>
-                <p>Price: U$D{show.price} </p>
-            </div>
+  return (
+    <>
+      <div className="divShow">
+        <div className="mainShow">
+          <div className="imgshow">
+            <img className="" src={show.photo} alt={show.name} />
+          </div>
+          <div className="divInfo">
+            <p>{show.name} </p>
+            <p>{show.description}</p>
+            <p>Price: U$D{show.price} </p>
+          </div>
         </div>
-    )}
+      </div>
+    </>
+  );
+}
