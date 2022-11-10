@@ -1,23 +1,22 @@
 import React from "react";
-import "../card.css";
-import { Link } from "react-router-dom"
+import "../card2.css";
+import { Link } from "react-router-dom";
 
 export default function CityCard({ datos }) {
   return (
-    <div className="contenedor-card" id="container">
+    <>
       <div className="card">
-        <div className="card-img">
+        <div className="face front">
           <img src={datos.photo} alt={datos.name} />
-        </div>
-        <div className="sub-card">
           <h3>{datos.name}</h3>
-          <p>Continent: {datos.continent}</p>
-          <p>Population: {datos.population}</p>
+        </div>
+        <div className="face back">
+          <h3>{datos.name}</h3>
           <Link to={`/detailcity/${datos.id}`}>
-            <button>More details</button>
+            <button className="btn">More details</button>
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,42 +1,40 @@
-import React from 'react'
-import { useParams } from 'react-router';
+import React from "react";
+import { useParams } from "react-router";
 import dataCity from "../data/dataCity";
-import events from "../data/events"
-import Itinerary from "../components/Itinerary"
-import NotElementFound from "../components/NotElementFound"
+import events from "../data/events";
+import Itinerary from "../components/Itinerary";
+import NotElementFound from "../components/NotElementFound";
+import "../details.css";
 
 export default function DetailCity() {
+  const { id } = useParams();
+  console.log(id);
+  let city = dataCity.find((city) => city.id === id);
 
-    const { id } = useParams()
-    console.log(id)
-    let city = dataCity.find(city=> city.id === id)
-
-    let event = events.filter(event =>event.citiId === id)
-    console.log(event)
+  let event = events.filter((event) => event.citiId === id);
+  console.log(event);
 
   return (
-    <div className='cardDetailsCity'>
-
-        <div className='imagenCardDetails'>
+    <>
+      <div className="cardDetPadre">
+        <div className="cardDet">
+          <div className="contimg">
             <img src={city.photo} alt="" />
-        </div>
-        <div className='informacionCardDetails'>
-
+          </div>
+          <div class="cardinfo">
             <h3>{city.name}</h3>
-            <p>This places is ubicated in {city.continent}.</p>
-            <p>Have a population of {city.population} peoples.</p>
-            <button>Comentarios</button>
+            <p>{city.continent}</p>
+            <p>{city.population}</p>
+          </div>
         </div>
-
-        <div className='cardDetailsCity'>
-           { event.length > 0?(
-            event.map(e=> <Itinerary key= {e.id} event={e}/>)
-           ):(
-            <NotElementFound/>
-           )
-        }
-
-    </div>
-    </div>
-  )
+      </div>
+      <div className="cardEvents">
+        {event.length > 0 ? (
+          event.map((e) => <Itinerary key={e.id} event={e} />)
+        ) : (
+          <NotElementFound />
+        )}
+      </div>
+    </>
+  );
 }
