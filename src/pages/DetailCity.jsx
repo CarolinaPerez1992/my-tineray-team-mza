@@ -22,9 +22,9 @@ export default function DetailCity() {
             <img src={city.photo} alt="" />
           </div>
           <div class="cardinfo">
-            <h3>{city.name}</h3>
-            <p>{city.continent}</p>
-            <p>{city.population}</p>
+            <h1>{city.name}</h1>
+            <h2>Continent: {city.continent}</h2>
+            <h2>Population: {city.population}</h2>
           </div>
         </div>
       </div>

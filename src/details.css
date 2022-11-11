@@ -16,7 +16,8 @@
   flex-direction: column;
   height: 25rem;
   width: 70rem;
-  background-color: aqua;
+  color: #eaf2f4;
+  background-color: #1f6e6b;
   border-radius: 20px;
   box-shadow: 0 5px 10px #000;
 }
@@ -33,7 +34,11 @@
 }
 
 .cardinfo {
+  display: flex;
   height: 100%;
   width: 50%;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }

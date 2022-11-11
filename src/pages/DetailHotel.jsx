@@ -22,9 +22,8 @@ export default function DetailHotel() {
             <img src={hotel.photo[1]} alt="" />
           </div>
           <div class="cardinfo">
-            <h3>{hotel.name}</h3>
-            <p>{hotel.continent}</p>
-            <p>{hotel.population}</p>
+            <h1>{hotel.name}</h1>
+            <h2>Capacity: {hotel.capacity}</h2>
           </div>
         </div>
       </div>

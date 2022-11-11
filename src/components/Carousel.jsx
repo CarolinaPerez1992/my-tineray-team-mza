@@ -35,7 +35,7 @@ export default function Carousel(props) {
   return (
     <div className="general">
       <div className="caja1">
-        <h2>CITIES</h2>
+        <h2>CITIES & HOTELS</h2>
         <div className="conteinerCarousel">
           <Boton icon={"<"} onClick={prev} />
           <div className="carousel">
@@ -49,20 +49,11 @@ export default function Carousel(props) {
               alt="sujeto"
               className="photoCarrusel"
             />
-            <img
+            {/* <img
               src={cities[numberOfChange + 2].photo}
               alt="sujeto"
               className="photoCarrusel"
-            />
-          </div>
-          <Boton icon={">"} onClick={next} />
-        </div>
-      </div>
-      <div className="caja2">
-        <h2>HOTELS</h2>
-        <div className="conteinerCarousel">
-          <Boton icon={"<"} onClick={prev} />
-          <div className="carousel">
+            /> */}
             <img
               src={hotels[numberOfChange + 2].photo[0]}
               alt="sujeto"
@@ -73,11 +64,11 @@ export default function Carousel(props) {
               alt="sujeto"
               className="photoCarrusel"
             />
-            <img
+            {/* <img
               src={hotels[numberOfChange + 2].photo[2]}
               alt="sujeto"
               className="photoCarrusel"
-            />
+            /> */}
           </div>
           <Boton icon={">"} onClick={next} />
         </div>

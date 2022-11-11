@@ -11,9 +11,9 @@ export default function Itinerary(props) {
             <img className="" src={event.photo[0]} alt={event.name} />
           </div>
           <div className="divInfo">
-            <p>{event.name} </p>
-            <p>{event.description}</p>
-            <p>Price: U$D{event.price} </p>
+            <h3> {event.name} </h3>
+            <h5>{event.description}</h5>
+            <h5>Price: U$D{event.price} </h5>
           </div>
         </div>
       </div>

@@ -41,12 +41,12 @@ export default function NavBar() {
           <img src="{hambur}" onClick={menu} alt="" />
         </div>
       )}
-      <nav>
+      <nav className="citi-hote">
         <Link to="/cities" style={{ textDecoration: "none" }}>
-          <h3>Cities</h3>
+          <h6 className="btn">Cities</h6>
         </Link>
         <Link to="/hotels" style={{ textDecoration: "none" }}>
-          <h3>Hotels</h3>
+          <h6 className="btn">Hotels</h6>
         </Link>
       </nav>
       {mostrar ? (
