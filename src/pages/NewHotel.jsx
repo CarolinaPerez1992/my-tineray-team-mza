@@ -13,7 +13,7 @@ export default function NewHotel() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let myObject = { name, capacity, photo, cityid };
+    let myObject = { name, capacity, photo, cityid, userId };
     setRegistration([...registration, myObject]);
     alert("You registered successfully!");
     limpiarFormulario();
@@ -24,6 +24,7 @@ export default function NewHotel() {
     setCapacity("");
     setPhoto("");
     setCityId("");
+    userId("")
 
     document.getElementById("myForm").reset();
   };
@@ -34,6 +35,7 @@ export default function NewHotel() {
   const [capacity, setCapacity] = useState("");
   const [photo, setPhoto] = useState("");
   const [cityid, setCityId] = useState("");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     localStorage.setItem("NewHotel", JSON.stringify(registration));
@@ -76,6 +78,14 @@ export default function NewHotel() {
             placeholder="cityId"
             className="form__input"
             onChange={(e) => setCityId(e.target.value)}
+            required
+          />
+                    <input
+            id="userId"
+            type="text"
+            placeholder="userId"
+            className="form__input"
+            onChange={(e) => setUserId(e.target.value)}
             required
           />
           <div className="submit">

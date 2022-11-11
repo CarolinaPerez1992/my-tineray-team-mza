@@ -13,7 +13,7 @@ export default function NewCity() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let myObject = { name, continent, photo, population };
+    let myObject = { name, continent, photo, population, userId };
     setRegistration([...registration, myObject]);
     alert("You registered successfully!");
     limpiarFormulario();
@@ -24,6 +24,7 @@ export default function NewCity() {
     setContinent("");
     setPhoto("");
     setPopulation("");
+    setUserId("");
 
     document.getElementById("myForm").reset();
   };
@@ -34,6 +35,7 @@ export default function NewCity() {
   const [continent, setContinent] = useState("");
   const [photo, setPhoto] = useState("");
   const [population, setPopulation] = useState("");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     localStorage.setItem("NewCity", JSON.stringify(registration));
@@ -76,6 +78,14 @@ export default function NewCity() {
             placeholder="Population"
             className="form__input"
             onChange={(e) => setPopulation(e.target.value)}
+            required
+          />
+                    <input
+            id="userId"
+            type="string"
+            placeholder="UserId"
+            className="form__input"
+            onChange={(e) => setUserId(e.target.value)}
             required
           />
           <div className="submit">
