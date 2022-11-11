@@ -7,7 +7,7 @@ export default function Layout(props) {
     <div>
       <NavBar />
 
-      <div className="container-layout">
+      <div className="container-layout ">
         {/* <Home1/>
         <Home2/> */}
         {props.children}

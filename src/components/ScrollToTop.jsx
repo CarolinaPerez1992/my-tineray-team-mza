@@ -6,7 +6,7 @@ export default function ScrollToTop() {
   };
   return (
     <div>
-      <button className="toUp " onClick={scroll}>
+      <button className="btn" onClick={scroll}>
         Up
       </button>
     </div>

@@ -12,9 +12,9 @@ export default function Show(props) {
             <img className="" src={show.photo} alt={show.name} />
           </div>
           <div className="divInfo">
-            <p>{show.name} </p>
-            <p>{show.description}</p>
-            <p>Price: U$D{show.price} </p>
+            <h1 className="h1">Show: {show.name} </h1>
+            <h2>{show.description}</h2>
+            <h3>Price: U$D{show.price} </h3>
           </div>
         </div>
       </div>
