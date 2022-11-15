@@ -1,91 +1,54 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useRef } from "react";
+import axios from "axios";
+import { baseURL } from "../url";
 
 export default function NewHotel() {
-  const getRecord = () => {
-    let data = localStorage.getItem("NewHotel");
-    if (data) {
-      return JSON.parse(data);
-    } else {
-      return [];
-    }
-  };
+  const form = useRef();
+  const name = useRef();
+  const capacity = useRef();
+  const photo = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let myObject = { name, capacity, photo, cityid, userId };
-    setRegistration([...registration, myObject]);
-    alert("You registered successfully!");
-    limpiarFormulario();
+    let data = {
+      name: name.current.value,
+      capacity: capacity.current.value,
+      photo: photo.current.value,
+      cityId: "636e9b452367c51ce27eb19e",
+      userId: "636e67886d5bdab4b6f1716d",
+    };
+    axios.post(`${baseURL}api/hotels`, data);
   };
-
-  const limpiarFormulario = () => {
-    setName("");
-    setCapacity("");
-    setPhoto("");
-    setCityId("");
-    userId("")
-
-    document.getElementById("myForm").reset();
-  };
-
-  const [registration, setRegistration] = useState(getRecord());
-
-  const [name, setName] = useState("");
-  const [capacity, setCapacity] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [cityid, setCityId] = useState("");
-  const [userId, setUserId] = useState("");
-
-  useEffect(() => {
-    localStorage.setItem("NewHotel", JSON.stringify(registration));
-  }, [registration]);
-
   return (
     <>
-      <form onSubmit={handleSubmit} className="form" id="newHotel">
+      <form ref={form} onSubmit={handleSubmit} className="form" id="newHotel">
         <div className="form-body">
           <h3 className="title">New Hotel</h3>
           <input
             id="name"
             name="name"
+            ref={name}
             type="text"
             placeholder="Name"
             className="form__input"
-            onChange={(e) => setName(e.target.value)}
             required
           />
           <input
             id="capacity"
             name="capacity"
+            ref={capacity}
             type="number"
             placeholder="Capacity"
             className="form__input"
-            onChange={(e) => setCapacity(e.target.value)}
             required
           />
           <input
             id="photo"
             type="text"
+            ref={photo}
             placeholder="URL Img"
             className="form__input"
-            onChange={(e) => setPhoto(e.target.value)}
-            required
-          />
-          <input
-            id="cityId"
-            type="text"
-            placeholder="cityId"
-            className="form__input"
-            onChange={(e) => setCityId(e.target.value)}
-            required
-          />
-                    <input
-            id="userId"
-            type="text"
-            placeholder="userId"
-            className="form__input"
-            onChange={(e) => setUserId(e.target.value)}
             required
           />
           <div className="submit">
