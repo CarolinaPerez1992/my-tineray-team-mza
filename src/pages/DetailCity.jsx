@@ -6,16 +6,11 @@ import "../details.css";
 import axios from "axios";
 import {baseURL} from "../url"
 import { useEffect, useState } from "react";
+import "../details.css";
 
 export default function DetailCity() {
   let [cities, setCities] = useState([]);
   const { id } = useParams();
-  console.log(id);
-  // let city = ciudades.find((city) => city.id === id);
-
-  // let event = events.filter((event) => event.citiId === id);
-  // console.log(event);
-
   let [activities, setActivities] = useState([]);
 
   useEffect(() => {
@@ -30,7 +25,7 @@ export default function DetailCity() {
       .then((res) => setActivities(res.data.data));
     // eslint-disable-next-line
   }, []);
-
+  
   return (
     <>
       <div className="cardDetPadre">
