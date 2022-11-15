@@ -1,32 +1,67 @@
 import React from "react";
 import HotelCard from "../components/HotelCard";
-import hotels from "../data/hotels";
+import { useRef, useState } from "react";
 import "../card.css";
-// import { useState } from "react";
-import { useRef } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { baseURL } from "../url";
 
 export default function Hotel() {
-  // let [hotelsFilters, setHotelsFilters] = useState([]);
   const searchId = useRef();
 
-  function filterSelect() {} //va el sort
+  let [hotelsFilters, setHotelsFilters] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${baseURL}api/hotels`)
+      .then((response) => setHotelsFilters(response.data.data));
+    axios
+      .get(`${baseURL}api/hotels`)
+      .then((response) => setHotelsFilters(response.data.data));
+  }, []);
+  function filterSelectCards() {
+    let checkFiltered = filterSelect();
+    console.log(checkFiltered);
+    let searchFiltered = filterSearch(checkFiltered);
+    console.log(searchFiltered);
+    setHotelsFilters(searchFiltered);
+    localStorage.setItem("ciudadesFiltradas", JSON.stringify(searchFiltered));
+  }
+  function filterSelect() {
+    let hotelsSorted;
+    let order = searchId.current?.value;
+    if (order !== "default") {
+      if (order === "low") {
+        hotelsSorted = hotelsFilters
+          .sort((a, b) => a.capacity - b.capacity)
+          .map((hotel) => hotel);
+      } else if (order === "high") {
+        hotelsSorted = hotelsFilters
+          .sort((a, b) => b.capacity - a.capacity)
+          .map((hotel) => hotel);
+      }
+      setHotelsFilters(hotelsSorted);
+      return hotelsSorted;
+    } else {
+      return hotelsFilters;
+    }
+  } //va el sort
 
-  function filterSearch() {
+  function filterSearch(array) {
     if (searchId.current.value !== "") {
-      let hotelsFilters = hotels.filter((hotel) =>
+      let hotelsFilters = array.filter((hotel) =>
         hotel.name.toLowerCase().includes(searchId.current.value.toLowerCase())
       );
       console.log(hotelsFilters);
       return hotelsFilters;
     } else {
-      return hotels;
+      return hotelsFilters;
     }
   }
   return (
     <>
       <div className="filter">
         <div>
-          <select name="orden" id="asydes" onChange={filterSelect}>
+          <select name="orden" id="asydes" onChange={filterSelectCards}>
             <option value="ascendent">Ascendent</option>
             <option value="descent">Descendent</option>
           </select>
@@ -36,12 +71,12 @@ export default function Hotel() {
             type="text"
             placeholder="Search"
             ref={searchId}
-            onChange={filterSearch}
+            onChange={filterSelectCards}
           />
         </div>
       </div>
       <div className="cont-card">
-        {hotels.map((cadaPerfil, id) => (
+        {hotelsFilters.map((cadaPerfil, id) => (
           <HotelCard datos={cadaPerfil} key={id} />
         ))}
       </div>
