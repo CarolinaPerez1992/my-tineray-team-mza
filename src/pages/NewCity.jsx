@@ -2,8 +2,10 @@ import React from "react";
 import {useRef} from "react"
 import axios from "axios";
 import {baseURL} from "../url"
+import { useNavigate } from "react-router-dom";
 
 export default function NewCity() {
+  const navigate = useNavigate()
   const form = useRef()
     const name = useRef()
     const continent = useRef()
@@ -22,8 +24,8 @@ export default function NewCity() {
     console.log(data)
     console.log(baseURL)
         axios.post(`${baseURL}api/cities`, data)
-        
-        
+        navigate('/')
+ 
     }
   return (
     <>
