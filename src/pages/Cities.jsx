@@ -91,7 +91,7 @@ export default function Cities() {
       </div>
       <div className="cont-card">
         {ciudadesFiltradas.map((cadaCity, id) => {
-          return <CityCard datos={cadaCity} key={id} />
+          return <CityCard datos={cadaCity} key={id} id={cadaCity._id}/>
 })}
       </div>
     </>
@@ -101,7 +101,7 @@ export default function Cities() {
 // import React from "react";
 // import Layout from "../layout/Layout";
 // import CityCard from "../components/CityCard";
-// import DataCity from "../data/dataCity";
+// import ity from "../data/dataCity";
 
 // export default function Cities() {
 //   return (

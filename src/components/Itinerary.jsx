@@ -1,7 +1,10 @@
 import React from "react";
 import "../shows.css";
+
+
 export default function Itinerary(props) {
   let { event } = props;
+  
 
   return (
     <>
