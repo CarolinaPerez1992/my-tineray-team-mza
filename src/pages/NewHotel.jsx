@@ -2,8 +2,10 @@ import React from "react";
 import { useRef } from "react";
 import axios from "axios";
 import { baseURL } from "../url";
+import { useNavigate } from "react-router-dom";
 
 export default function NewHotel() {
+  const navigate = useNavigate();
   const form = useRef();
   const name = useRef();
   const capacity = useRef();
@@ -19,6 +21,7 @@ export default function NewHotel() {
       userId: "636e67886d5bdab4b6f1716d",
     };
     axios.post(`${baseURL}api/hotels`, data);
+    navigate("/");
   };
   return (
     <>

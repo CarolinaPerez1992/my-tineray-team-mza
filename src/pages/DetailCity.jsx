@@ -2,9 +2,8 @@ import React from "react";
 import { useParams } from "react-router";
 import Itinerary from "../components/Itinerary";
 import NotElementFound from "../components/NotElementFound";
-import "../details.css";
 import axios from "axios";
-import {baseURL} from "../url"
+import { baseURL } from "../url";
 import { useEffect, useState } from "react";
 import "../details.css";
 
@@ -14,18 +13,20 @@ export default function DetailCity() {
   let [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    axios.get(`${baseURL}api/cities/${id}`)
+    axios
+      .get(`${baseURL}api/cities/${id}`)
       .then((res) => setCities(res.data.response));
 
     // eslint-disable-next-line
-  }, [])
+  }, []);
 
   useEffect(() => {
-    axios.get(`${baseURL}api/itineraries?citiId=${id}`)
+    axios
+      .get(`${baseURL}api/itineraries?citiId=${id}`)
       .then((res) => setActivities(res.data.data));
     // eslint-disable-next-line
   }, []);
-  
+
   return (
     <>
       <div className="cardDetPadre">
