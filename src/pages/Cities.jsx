@@ -1,12 +1,15 @@
 import React from "react";
 import CityCard from "../components/CityCard";
-import dataCity from "../data/dataCity";
 import { useRef, useState } from "react";
 import FormCity from "../components/FormCity";
+import { useEffect } from "react";
+import axios from "axios";
+import {baseURL} from "../url"
 
 export default function Cities() {
+  let [ciudades, setCiudades] = useState([])
   let [ciudadesFiltradas, setCiudadesFiltradas] = useState([]);
-  console.log(ciudadesFiltradas);
+  
   const America = useRef();
   const Europa = useRef();
   const Asia = useRef();
@@ -15,7 +18,15 @@ export default function Cities() {
 
   let continentes = [America, Europa, Asia, Oceania];
 
-  let checkContinent = [...new Set(dataCity.map((ciudad) => ciudad.continent))];
+  useEffect(() => {
+    axios.get(`${baseURL}api/cities`)
+        .then(response => setCiudades(response.data.data))
+
+    axios.get(`${baseURL}api/cities`)
+        .then(response => setCiudadesFiltradas(response.data.data))
+}, []) 
+
+  let checkContinent = [...new Set(ciudades.map((ciudad) => ciudad.continent))];
 
   function filterCheckCards() {
     let checkFiltered = filterCheck();
@@ -32,13 +43,13 @@ export default function Cities() {
     continentes
       .filter((continente) => continente.current?.checked)
       .map((continente) => checks.push(continente.current.value));
-    let ciudadesFiltradas = dataCity.filter((ciudad) =>
+    let ciudadesFiltradas = ciudades.filter((ciudad) =>
       checks.includes(ciudad.continent)
     );
     console.log(checks.length);
     if (checks.length === 0) {
-      console.log(dataCity);
-      return dataCity;
+      console.log(ciudades);
+      return ciudades;
     }
     return ciudadesFiltradas;
   }
@@ -79,9 +90,9 @@ export default function Cities() {
         </div>
       </div>
       <div className="cont-card">
-        {dataCity.map((cadaCity, id) => (
-          <CityCard datos={cadaCity} key={id} />
-        ))}
+        {ciudadesFiltradas.map((cadaCity, id) => {
+          return <CityCard datos={cadaCity} key={id} id={cadaCity._id}/>
+})}
       </div>
     </>
   );
@@ -90,7 +101,7 @@ export default function Cities() {
 // import React from "react";
 // import Layout from "../layout/Layout";
 // import CityCard from "../components/CityCard";
-// import DataCity from "../data/dataCity";
+// import ity from "../data/dataCity";
 
 // export default function Cities() {
 //   return (
