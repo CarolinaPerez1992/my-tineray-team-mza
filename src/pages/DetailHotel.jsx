@@ -32,9 +32,9 @@ export default function DetailHotel() {
       <div className="cardDetPadre">
         <div className="cardDet">
           <div className="contimg">
-            <img src={hotels.photo[0]} alt={hotels.name} />
+            <img src={hotels.photo} alt={hotels.name} />
           </div>
-          <div class="cardinfo">
+          <div className="cardinfo">
             <h1>{hotels.name}</h1>
             <h2>Capacity: {hotels.capacity}</h2>
           </div>
