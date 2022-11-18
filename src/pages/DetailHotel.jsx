@@ -17,36 +17,34 @@ export default function DetailHotel() {
       .get(`${baseURL}api/hotels/${id}`)
       .then((res) => setHotels(res.data.response));
 
-    // eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
     axios
       .get(`${baseURL}api/shows?hotelId=${id}`)
       .then((res) => setShows(res.data.data));
     // eslint-disable-next-line
   }, []);
-
-  return (
-    <>
-      <div className="cardDetPadre">
-        <div className="cardDet">
-          <div className="contimg">
-            <img src={hotels.photo} alt={hotels.name} />
-          </div>
-          <div className="cardinfo">
-            <h1>{hotels.name}</h1>
-            <h2>Capacity: {hotels.capacity}</h2>
+  console.log(shows);
+  if (hotels.length !== 0) {
+    return (
+      <>
+        <div className="cardDetPadre">
+          <div className="cardDet">
+            <div className="contimg">
+              <img src={hotels.photo[0]} alt={hotels.name} />
+            </div>
+            <div className="cardinfo">
+              <h1>{hotels.name}</h1>
+              <h2>Capacity: {hotels.capacity}</h2>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="cardEvents">
-        {shows.length > 0 ? (
-          shows.map((e) => <Show key={e._id} show={e} />)
-        ) : (
-          <NotElementFound />
-        )}
-      </div>
-    </>
-  );
+        <div className="cardEvents">
+          {shows.length > 0 ? (
+            shows.map((e) => <Show key={e._id} show={e} />)
+          ) : (
+            <NotElementFound />
+          )}
+        </div>
+      </>
+    );
+  }
 }
