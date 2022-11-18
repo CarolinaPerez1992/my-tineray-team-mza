@@ -19,16 +19,13 @@ export default function Hotel() {
   }, []);
   let filterHotels = () => {
     if (selectId.current.value !== "asc" && selectId.current.value !== "desc") {
-      axios
-        .get(`${baseURL}api/hotels?name=${searchId.current.value}`)
-        .then((res) => setHotels(res.data.data));
-    } else {
-      axios
-        .get(
-          `${baseURL}api/hotels?order=${selectId.current.value}&name=${searchId.current.value}`
-        )
-        .then((res) => setHotels(res.data.data));
+      selectId.current.value = "asc";
     }
+    axios
+      .get(
+        `${baseURL}api/hotels?order=${selectId.current.value}&name=${searchId.current.value}`
+      )
+      .then((res) => setHotels(res.data.data));
   };
 
   // let [hotels, setHotels] = useState([]);
