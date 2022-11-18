@@ -2,8 +2,7 @@ import React from "react";
 import "../card2.css";
 import { Link } from "react-router-dom";
 
-export default function CityCard(props) {
-  let {datos, id} = props
+export default function CityCard({ datos }) {
   return (
     <>
       <div className="card">
@@ -13,7 +12,7 @@ export default function CityCard(props) {
         </div>
         <div className="face back">
           <h3>{datos.name}</h3>
-          <Link to={`/detailcity/${id}`}>
+          <Link to={`/detailcity/${datos.id}`}>
             <button className="btn">More details</button>
           </Link>
         </div>

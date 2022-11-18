@@ -3,7 +3,8 @@ import "../card2.css";
 import { Link } from "react-router-dom";
 
 export default function HotelCard(props) {
-  let { datos, id } = props;
+  let { datos } = props;
+  console.log(datos);
   return (
     <>
       <div className="card">
@@ -13,7 +14,7 @@ export default function HotelCard(props) {
         </div>
         <div className="face back">
           <h3>{datos.name}</h3>
-          <Link to={`/detailhotel/${id}`}>
+          <Link to={`/detailhotel/${datos.id}`}>
             <button className="btn">More details</button>
           </Link>
         </div>

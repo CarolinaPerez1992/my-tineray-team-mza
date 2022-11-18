@@ -1,48 +1,35 @@
 import React from "react";
 import { useParams } from "react-router";
+import hotels from "../data/hotels";
+import hotelShow from "../data/hotelShow";
 import Show from "../components/Show";
 import NotElementFound from "../components/NotElementFound";
 import "../details.css";
-import axios from "axios";
-import { baseURL } from "../url";
-import { useEffect, useState } from "react";
 
 export default function DetailHotel() {
-  let [hotels, setHotels] = useState([]);
   const { id } = useParams();
-  let [shows, setShows] = useState([]);
+  console.log(id);
+  let hotel = hotels.find((hotel) => hotel.id === id);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}api/hotels/${id}`)
-      .then((res) => setHotels(res.data.response));
-
-    // eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}api/shows?hotelId=${id}`)
-      .then((res) => setShows(res.data.data));
-    // eslint-disable-next-line
-  }, []);
+  let show = hotelShow.filter((show) => show.hotelId === id);
+  console.log(show);
 
   return (
     <>
       <div className="cardDetPadre">
         <div className="cardDet">
           <div className="contimg">
-            <img src={hotels.photo[0]} alt={hotels.name} />
+            <img src={hotel.photo[1]} alt="" />
           </div>
           <div class="cardinfo">
-            <h1>{hotels.name}</h1>
-            <h2>Capacity: {hotels.capacity}</h2>
+            <h1>{hotel.name}</h1>
+            <h2>Capacity: {hotel.capacity}</h2>
           </div>
         </div>
       </div>
       <div className="cardEvents">
-        {shows.length > 0 ? (
-          shows.map((e) => <Show key={e._id} show={e} />)
+        {show.length > 0 ? (
+          show.map((e) => <Show key={e.id} show={e} />)
         ) : (
           <NotElementFound />
         )}

@@ -1,49 +1,36 @@
 import React from "react";
 import { useParams } from "react-router";
+import dataCity from "../data/dataCity";
+import events from "../data/events";
 import Itinerary from "../components/Itinerary";
 import NotElementFound from "../components/NotElementFound";
-import axios from "axios";
-import { baseURL } from "../url";
-import { useEffect, useState } from "react";
 import "../details.css";
 
 export default function DetailCity() {
-  let [cities, setCities] = useState([]);
   const { id } = useParams();
-  let [activities, setActivities] = useState([]);
+  console.log(id);
+  let city = dataCity.find((city) => city.id === id);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}api/cities/${id}`)
-      .then((res) => setCities(res.data.response));
-
-    // eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}api/itineraries?citiId=${id}`)
-      .then((res) => setActivities(res.data.data));
-    // eslint-disable-next-line
-  }, []);
+  let event = events.filter((event) => event.citiId === id);
+  console.log(event);
 
   return (
     <>
       <div className="cardDetPadre">
         <div className="cardDet">
           <div className="contimg">
-            <img src={cities.photo} alt="" />
+            <img src={city.photo} alt="" />
           </div>
           <div class="cardinfo">
-            <h1>{cities.name}</h1>
-            <h2>Continent: {cities.continent}</h2>
-            <h2>Population: {cities.population}</h2>
+            <h1>{city.name}</h1>
+            <h2>Continent: {city.continent}</h2>
+            <h2>Population: {city.population}</h2>
           </div>
         </div>
       </div>
       <div className="cardEvents">
-        {activities.length > 0 ? (
-          activities.map((e) => <Itinerary key={e._id} event={e} />)
+        {event.length > 0 ? (
+          event.map((e) => <Itinerary key={e.id} event={e} />)
         ) : (
           <NotElementFound />
         )}
