@@ -1,18 +1,22 @@
 import React from "react";
 import {useRef} from "react"
-import axios from "axios";
-import {baseURL} from "../url"
 import { useNavigate } from "react-router-dom";
+import { useDispatch} from "react-redux"
+import citiesActions from "../redux/actions/citiesActions";
+import Swal from 'sweetalert2'
 
 export default function NewCity() {
+  const dispatch = useDispatch()
+  const {createNewCity} = citiesActions
+
   const navigate = useNavigate()
   const form = useRef()
     const name = useRef()
     const continent = useRef()
     const photo = useRef()
     const population = useRef()
-    console.log(baseURL)
-    const sendForm = (e) => {
+    
+    async function sendForm(e) {
     e.preventDefault()
       let data =  {
         name: name.current.value,
@@ -21,11 +25,29 @@ export default function NewCity() {
         population: population.current.value,
         userId: "636e67886d5bdab4b6f1716d"
     } 
-    console.log(data)
-    console.log(baseURL)
-        axios.post(`${baseURL}api/cities`, data)
-        navigate('/')
- 
+    try{
+      let res = await dispatch(createNewCity(data))
+      if(res.payload.success){
+        Swal.fire({
+          icon: "success",
+          title: "City created",
+          showConfirmButton: "true"
+        })
+        .then(create =>{
+          if(create.isConfirmed){
+            window.location.href= `/detailcity/${res.payload.id}`
+          }
+        })
+      }else{
+        Swal.fire({
+          icon: "error",
+          title: "ups",
+          text: res.payload.messages
+        })
+      }
+    }catch(error) {
+      console.log(error)
+    }
     }
   return (
     <>
