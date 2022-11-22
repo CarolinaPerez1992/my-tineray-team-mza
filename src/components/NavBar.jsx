@@ -34,6 +34,9 @@ export default function NavBar() {
             <NavLink to="/hotels" style={{ textDecoration: "none" }}>
               <h2>Hotels</h2>
             </NavLink>
+            <NavLink to="/mycities" style={{ textDecoration: "none" }}>
+              <h2>My Cities</h2>
+            </NavLink>
           </div>
         </div>
       ) : (

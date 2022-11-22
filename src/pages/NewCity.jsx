@@ -8,8 +8,7 @@ import Swal from 'sweetalert2'
 export default function NewCity() {
   const dispatch = useDispatch()
   const {createNewCity} = citiesActions
-
-  const navigate = useNavigate()
+  
   const form = useRef()
     const name = useRef()
     const continent = useRef()
