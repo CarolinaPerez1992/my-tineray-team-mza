@@ -28,6 +28,9 @@ export default function Footer() {
         <Link to="/newcity">
           <p className="formnew">New City</p>
         </Link>
+        <Link to="/mycities">
+              <p>My Cities</p>
+        </Link>
       </div>
     </div>
   );
