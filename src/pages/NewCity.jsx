@@ -1,53 +1,51 @@
 import React from "react";
-import {useRef} from "react"
-import { useNavigate } from "react-router-dom";
-import { useDispatch} from "react-redux"
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
 import citiesActions from "../redux/actions/citiesActions";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 export default function NewCity() {
-  const dispatch = useDispatch()
-  const {createNewCity} = citiesActions
-  
-  const form = useRef()
-    const name = useRef()
-    const continent = useRef()
-    const photo = useRef()
-    const population = useRef()
-    
-    async function sendForm(e) {
-    e.preventDefault()
-      let data =  {
-        name: name.current.value,
-        continent: continent.current.value,
-        photo: photo.current.value,
-        population: population.current.value,
-        userId: "636e67886d5bdab4b6f1716d"
-    } 
-    try{
-      let res = await dispatch(createNewCity(data))
-      if(res.payload.success){
+  const dispatch = useDispatch();
+  const { createNewCity } = citiesActions;
+
+  const form = useRef();
+  const name = useRef();
+  const continent = useRef();
+  const photo = useRef();
+  const population = useRef();
+
+  async function sendForm(e) {
+    e.preventDefault();
+    let data = {
+      name: name.current.value,
+      continent: continent.current.value,
+      photo: photo.current.value,
+      population: population.current.value,
+      userId: "636e67886d5bdab4b6f1716d",
+    };
+    try {
+      let res = await dispatch(createNewCity(data));
+      if (res.payload.success) {
         Swal.fire({
           icon: "success",
           title: "City created",
-          showConfirmButton: "true"
-        })
-        .then(create =>{
-          if(create.isConfirmed){
-            window.location.href= `/detailcity/${res.payload.id}`
+          showConfirmButton: "true",
+        }).then((create) => {
+          if (create.isConfirmed) {
+            window.location.href = `/detailcity/${res.payload.id}`;
           }
-        })
-      }else{
+        });
+      } else {
         Swal.fire({
           icon: "error",
           title: "ups",
-          text: res.payload.messages
-        })
+          text: res.payload.messages,
+        });
       }
-    }catch(error) {
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-    }
+  }
   return (
     <>
       <form ref={form} className="form" id="newCity">
@@ -88,7 +86,9 @@ export default function NewCity() {
             required
           />
           <div className="submit">
-            <button type="submit" className="submit2" onClick={sendForm}>Register</button>
+            <button type="submit" className="submit2" onClick={sendForm}>
+              Register
+            </button>
           </div>
         </div>
       </form>
