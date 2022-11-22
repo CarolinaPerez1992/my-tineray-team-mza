@@ -32,10 +32,35 @@ const filterHotels = createAsyncThunk("filterHotels", async (data) => {
     };
   }
 });
+const createNewHotel = createAsyncThunk("newHotel", async (newHotel) => {
+  try {
+    const res = await axios.post(`${baseURL}api/hotels`, newHotel);
+    if (res.data.id) {
+      let info = {
+        id: res.data.id,
+        success: true,
+        response: newHotel,
+      };
+      return info;
+    } else {
+      let info = {
+        success: false,
+        messages: res.data.message,
+      };
+      return info;
+    }
+  } catch (error) {
+    return {
+      success: false,
+      response: "An error ocurred",
+    };
+  }
+});
 
 const hotelsActions = {
   getHotels,
   filterHotels,
+  createNewHotel,
 };
 
 export default hotelsActions;
