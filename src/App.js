@@ -14,6 +14,7 @@ import AutoToTop from "./components/AutoToTop";
 import DetailCity from "./pages/DetailCity";
 import DetailHotel from "./pages/DetailHotel";
 import MyCities from "./pages/MyCities";
+import MyHotels from "./pages/MyHotels";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/detailcity/:id" element={<DetailCity />}></Route>
           <Route path="/detailhotel/:id" element={<DetailHotel />}></Route>
           <Route path="/mycities" element={<MyCities />}></Route>
+          <Route path="/myhotels" element={<MyHotels />}></Route>
         </Routes>
       </Layout>
     </BrowserRouter>
