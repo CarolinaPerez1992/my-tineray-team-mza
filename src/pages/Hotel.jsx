@@ -28,7 +28,7 @@ export default function Hotel() {
       dispatch(getHotels());
     }
   }, []);
-
+// reload
   let filter = () => {
     if (selectId.current.value !== "asc" && selectId.current.value !== "desc") {
       selectId.current.value = "asc";

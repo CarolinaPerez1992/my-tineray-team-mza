@@ -77,7 +77,6 @@ async function updateAdmin() {
                 }
 
                 dispatch(updateCity(data))
-                window.location.reload()
             }
         })
 
