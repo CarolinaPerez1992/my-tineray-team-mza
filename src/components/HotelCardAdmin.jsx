@@ -3,7 +3,6 @@ import "../card2.css";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import hotelsActions from "../redux/actions/hotelsActions";
-import hotels from "../data/hotels";
 
 export default function HotelCardAdmin(props) {
   let { datos, id } = props;
@@ -85,7 +84,6 @@ export default function HotelCardAdmin(props) {
           }
 
           dispatch(updateHotel(data));
-          window.location.reload();
         },
       });
 

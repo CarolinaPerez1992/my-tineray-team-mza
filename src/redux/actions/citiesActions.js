@@ -73,6 +73,7 @@ const updateCity = createAsyncThunk('updateCity', async(data) => {
 }
 })
 
+
 const citiesActions = {
     getCities,
     filterCities,

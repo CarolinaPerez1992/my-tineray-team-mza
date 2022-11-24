@@ -15,6 +15,7 @@ import DetailCity from "./pages/DetailCity";
 import DetailHotel from "./pages/DetailHotel";
 import MyCities from "./pages/MyCities";
 import MyHotels from "./pages/MyHotels";
+import MyTinerary from "./pages/MyTinerary";
 
 function App() {
   return (
@@ -34,8 +35,10 @@ function App() {
           <Route path="/detailhotel/:id" element={<DetailHotel />}></Route>
           <Route path="/mycities" element={<MyCities />}></Route>
           <Route path="/myhotels" element={<MyHotels />}></Route>
+          <Route path="/mytinerary/:id" element={<MyTinerary />}></Route>
         </Routes>
       </Layout>
+      {/* useState(false) reemplazar window por set !reload */}
     </BrowserRouter>
   );
 }
