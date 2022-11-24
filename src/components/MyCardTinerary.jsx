@@ -101,6 +101,7 @@ async function updateAdmin() {
                   }
 
                 dispatch(updateTinerary(data))
+                window.location.reload();
             }
         })
 
