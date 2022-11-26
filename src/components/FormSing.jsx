@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "../sign.css";
-// import  { useRef } from "react"
 import { useDispatch } from "react-redux"
 import userActions from "../redux/actions/userAction";
-import { useEffect } from "react";
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
 
@@ -37,6 +35,7 @@ export default function FormSign() {
         .then(result=>{
           if(result.isConfirmed){
               navigate("/")
+              localStorage.setItem('user', JSON.stringify(user))
           }
         })
       }else {
