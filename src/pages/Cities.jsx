@@ -3,114 +3,97 @@ import CityCard from "../components/CityCard";
 import { useRef, useState } from "react";
 import FormCity from "../components/FormCity";
 import { useEffect } from "react";
-import axios from "axios";
-import {baseURL} from "../url"
+import NotElementFound from "../components/NotElementFound";
+import {useSelector, useDispatch} from 'react-redux';
+import citiesActions from '../redux/actions/citiesActions'
+
 
 export default function Cities() {
-  let [ciudades, setCiudades] = useState([])
-  let [ciudadesFiltradas, setCiudadesFiltradas] = useState([]);
   
-  const America = useRef();
-  const Europa = useRef();
-  const Asia = useRef();
-  const Oceania = useRef();
-  const searchId = useRef();
+  const {cities, continent, search, checked, checkBox} = useSelector(store => store.cityReducer)
+  const dispatch = useDispatch()
+  const { getCities, filterCities } = citiesActions
 
-  let continentes = [America, Europa, Asia, Oceania];
-
+  let [checkboxes, setCheckBoxes] = useState([])
+  const searchId= useRef()
+  const input = useRef()
+  
   useEffect(() => {
-    axios.get(`${baseURL}api/cities`)
-        .then(response => setCiudades(response.data.data))
+    if(search || checkBox){
+        let info ={ 
+            search: search, 
+            continents: checkBox, 
+            continentChecked: checked
+        }
+        dispatch(filterCities(info))
+        searchId.current.value = search
+        if(checked){
+            checked.forEach(check => {
+                let checkContinent = Array.from(input.current).find(inp=>inp.value === check)
+                checkContinent.checked = true
+            })
+        }
+    }else{
+        dispatch(getCities())
+    }
+    
 
-    axios.get(`${baseURL}api/cities`)
-        .then(response => setCiudadesFiltradas(response.data.data))
 }, []) 
 
-  let checkContinent = [...new Set(ciudades.map((ciudad) => ciudad.continent))];
-
-  function filterCheckCards() {
-    let checkFiltered = filterCheck();
-    console.log(checkFiltered);
-    let searchFiltered = filterSearch(checkFiltered);
-    console.log(searchFiltered);
-    setCiudadesFiltradas(searchFiltered);
-    console.log(setCiudadesFiltradas);
-    localStorage.setItem("ciudadesFiltradas", JSON.stringify(searchFiltered));
-  }
-
-  function filterCheck() {
+  function filterCheck(check) {
     let checks = [];
-    continentes
-      .filter((continente) => continente.current?.checked)
-      .map((continente) => checks.push(continente.current.value));
-    let ciudadesFiltradas = ciudades.filter((ciudad) =>
-      checks.includes(ciudad.continent)
-    );
-    console.log(checks.length);
-    if (checks.length === 0) {
-      console.log(ciudades);
-      return ciudades;
+    if (check.target.checked) {
+      checks = [...checkboxes, check.target.value]
+      
+    } else{
+      checks = checkboxes.filter((checkbox) => checkbox !== check.target.value)
     }
-    return ciudadesFiltradas;
+    setCheckBoxes(checks)
+    return checks;
   }
 
-  function filterSearch(array) {
-    if (searchId.current.value !== "") {
-      let ciudadesFiltradas = array.filter((ciudad) =>
-        ciudad.name.toLowerCase().includes(searchId.current.value.toLowerCase())
-      );
-      return ciudadesFiltradas;
-    } else {
-      return array;
-    }
+  function filterSearch(cityFil) {
+    let check = filterCheck(cityFil)
+    let url = check.map( (continent) => `continent=${continent}`).join('&')
+    let data = { 
+          continents: url,
+          search: searchId.current.value,
+          continentsChecked: check
+        }
+    dispatch(filterCities(data))
   }
+
   return (
     <>
       <div className="filter">
-        <div className="check">
-          {checkContinent.map((continent, index) => {
+        <form ref={input} className="check">  
+          {continent.map((continent, index) => {
             return (
               <FormCity
                 id={index}
                 continent={continent}
                 valor={continent}
-                refId={continentes[index]}
-                fx={filterCheckCards}
+                // refId={continentes[index]}
+                fx={filterSearch}
               />
             );
           })}
-        </div>
+        </form>
         <div className="search">
           <input
             type="text"
             placeholder="Search"
             ref={searchId}
-            onChange={filterCheckCards}
+            onChange={filterSearch}
           />
         </div>
       </div>
       <div className="cont-card">
-        {ciudadesFiltradas.map((cadaCity, id) => {
+        {cities.length > 0 ? (cities.map((cadaCity, id) => {
           return <CityCard datos={cadaCity} key={id} id={cadaCity._id}/>
-})}
+          })):(<NotElementFound/>)
+          }
       </div>
     </>
   );
 }
-
-// import React from "react";
-// import Layout from "../layout/Layout";
-// import CityCard from "../components/CityCard";
-// import ity from "../data/dataCity";
-
-// export default function Cities() {
-//   return (
-//     <Layout>
-//       <div className="cont-card">
-//         {DataCity.map((cadaPerfil, id) => (
-//           <CityCard datos={cadaPerfil} key={id} />
-//         ))}
-//       </div>
-//     </Layout>
-//   );
-// }
