@@ -1,18 +1,55 @@
 import React, { useState } from "react";
 import "../sign.css";
+import { useDispatch } from "react-redux"
+import userActions from "../redux/actions/userAction";
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
+
 
 export default function FormSign() {
+
+  // let form = useRef()
+  const navigate = useNavigate()
+  let dispatch = useDispatch()
+  let { login } = userActions
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submit = () => {
-    if (email === "" || password === "") {
-      alert("Please fill in all fields");
-    } else {
-      let login = { email, password };
-      localStorage.setItem("user", JSON.stringify(login));
+
+
+  async function submit(e) {
+    e.preventDefault()
+    let user = {
+      email,
+      password
+    }
+    try {
+      let res = await dispatch(login(user))
+      console.log(res);
+      if(res.payload.success){
+        Swal.fire({
+          icon: "success",
+          title: res.payload.res.message,
+          showConfirmButton: true,
+        })
+        .then(result=>{
+          if(result.isConfirmed){
+              navigate("/")
+              localStorage.setItem('user', JSON.stringify(user))
+          }
+        })
+      }else {
+        Swal.fire({
+          icon: "error",
+          title: "email or password incorrect",
+          text: res.payload.messages,
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
   return (
     <>
       <form className="form">
