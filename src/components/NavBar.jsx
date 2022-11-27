@@ -6,8 +6,11 @@ import usuario from "../img/usuario.png";
 import hambur from "../img/hambur.png";
 import { Link } from "react-router-dom";
 import "../index.css";
+import {useSelector} from "react-redux"
+
 
 export default function NavBar() {
+  let { role , logged} = useSelector(state=> state.userReducer)
   let [mostrar, setMostrarOcultar] = useState(true);
   let change = () => {
     setMostrarOcultar(!mostrar);
@@ -34,9 +37,7 @@ export default function NavBar() {
             <NavLink to="/hotels" style={{ textDecoration: "none" }}>
               <h2>Hotels</h2>
             </NavLink>
-            <NavLink to="/mycities" style={{ textDecoration: "none" }}>
-              <h2>My Cities</h2>
-            </NavLink>
+
           </div>
         </div>
       ) : (
@@ -60,12 +61,40 @@ export default function NavBar() {
         <div className="login">
           <img src={usuario} width="45" onClick={change} alt="" />
           <div className="datosLogin">
-            <Link to="/signin" style={{ textDecoration: "none" }}>
-              <li>LogIn</li>
+            {!logged && (
+              <>
+            <Link to="/sign-in" style={{ textDecoration: "none" }}>
+              <li>SignIn</li>
             </Link>
-            <Link to="/signup" style={{ textDecoration: "none" }}>
-              <li>LogOut</li>
+            <Link to="/sign-up" style={{ textDecoration: "none" }}>
+              <li>SignUp</li>
             </Link>
+
+            </>
+            )}
+          
+            {logged &&(
+            <div>
+            <NavLink to="/mytinerary" style={{ textDecoration: "none" }}>
+              <li>My Tinerary</li>
+            </NavLink>
+            <NavLink to="/myshow" style={{ textDecoration: "none" }}>
+              <li>My Shows</li>
+            </NavLink>
+            </div>
+           ) }
+            <NavLink to="/newcity" style={{ textDecoration: "none" }}>
+              <li>New City</li>
+            </NavLink>
+            <NavLink to="/newhotel" style={{ textDecoration: "none" }}>
+              <li>New Hotel</li>
+            </NavLink>
+            <NavLink to="/mycities" style={{ textDecoration: "none" }}>
+              <li>My Cities</li>
+            </NavLink>
+            <NavLink to="/myhotels" style={{ textDecoration: "none" }}>
+              <li>My Hotels</li>
+            </NavLink>
           </div>
         </div>
       )}
