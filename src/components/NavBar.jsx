@@ -73,7 +73,7 @@ export default function NavBar() {
             </>
             )}
           
-            {logged &&(
+            {logged && role === 'user' &&(
             <div>
             <NavLink to="/mytinerary" style={{ textDecoration: "none" }}>
               <li>My Tinerary</li>
@@ -83,6 +83,8 @@ export default function NavBar() {
             </NavLink>
             </div>
            ) }
+           {logged && role === 'admin' && (
+            <>
             <NavLink to="/newcity" style={{ textDecoration: "none" }}>
               <li>New City</li>
             </NavLink>
@@ -95,6 +97,8 @@ export default function NavBar() {
             <NavLink to="/myhotels" style={{ textDecoration: "none" }}>
               <li>My Hotels</li>
             </NavLink>
+            </>
+            )}
           </div>
         </div>
       )}
