@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../sign.css";
+import "../sign.css"
 import { useDispatch } from "react-redux"
 import userActions from "../redux/actions/userAction";
 import Swal from "sweetalert2"

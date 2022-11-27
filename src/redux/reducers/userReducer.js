@@ -1,7 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
 import userActions from '../actions/userAction'
 
-const { login } = userActions
+
+const { login, reEntry, exit } = userActions
 const initialState = {
     user: [],
     name: "",
@@ -44,16 +45,48 @@ const userReducer = createReducer(initialState,
                     return newState
                 }
             })
-// .addCase(exit.fulfilled, (state, action)=> ){
-//    if(success)
-//    localStorage.removeItem("token")
-//    let newState = {
-//     ...state,
-//     name: user.name,
-//     photo: user.photo,
-//     verified: true,
-//     token: token
-// }
+            .addCase(reEntry.fulfilled, (state, action) => {
+                const { success, response } = action.payload
+                let {user, token} = response
+                if (success) {
+                    let newState = {
+                        ...state,
+                        name: user.name,
+                        photo: user.photo,
+                        role: user.role,
+                        logged: true,
+                        token
+                    }
+                    return newState
+                } else {
+                    let newState = {
+                        ...state,
+                        message: response
+                    }
+                    return newState
+                }
+            })
+            .addCase(exit.fulfilled, (state, action) => {
+                const { success, response } = action.payload
+                if (success) {
+                    localStorage.removeItem('token')
+                    let newState = {
+                        ...state,
+                        name: '',
+                        photo: '',
+                        logged: false,
+                        token: '',
+                        role: ''
+                    }
+                    return newState
+                } else {
+                    let newState = {
+                        ...state,
+                        mensaje: response
+                    }
+                    return newState
+                }
+            })
 
         })
 export default userReducer
