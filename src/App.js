@@ -38,6 +38,7 @@ function App() {
           <Route path="/detailcity/:id" element={<DetailCity />}></Route>
           <Route path="/detailhotel/:id" element={<DetailHotel />}></Route>
           
+          <Route element={<ProtectedRoute isAllowed={role === "admin"}/>}/>
           <Route path="/newcity" element={<NewCity />}></Route>
           <Route path="/newhotel" element={<NewHotel />}></Route>
           <Route path="/mycities" element={<MyCities />}></Route>
