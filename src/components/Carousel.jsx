@@ -35,7 +35,7 @@ export default function Carousel(props) {
   return (
     <div className="general">
       <div className="caja1">
-        <h2>CITIES & HOTELS</h2>
+        <h2 className="citiesyhotels">CITIES & HOTELS</h2>
         <div className="conteinerCarousel">
           <Boton icon={"<"} onClick={prev} />
           <div className="carousel">

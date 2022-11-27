@@ -17,8 +17,12 @@ import MyCities from "./pages/MyCities";
 import MyHotels from "./pages/MyHotels";
 import MyTinerary from "./pages/MyTinerary";
 import MyShows from "./pages/MyShows";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { useSelector } from "react-redux";
 
 function App() {
+
+  let {logged, role } = useSelector(store => store.userReducer)
   return (
     <BrowserRouter>
       <AutoToTop />
@@ -28,16 +32,20 @@ function App() {
           <Route path="/hotels" element={<Hotel />}></Route>
           <Route path="/cities" element={<Cities />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/signin" element={<SignIn />}></Route>
-          <Route path="/newcity" element={<NewCity />}></Route>
-          <Route path="/newhotel" element={<NewHotel />}></Route>
+
+          <Route path="/sign-up" element={logged ?<Home/> : <SignUp />}></Route>
+          <Route path="/sign-in" element={logged ?<Home/> : <SignIn />}></Route>
           <Route path="/detailcity/:id" element={<DetailCity />}></Route>
           <Route path="/detailhotel/:id" element={<DetailHotel />}></Route>
+          
+          <Route path="/newcity" element={<NewCity />}></Route>
+          <Route path="/newhotel" element={<NewHotel />}></Route>
           <Route path="/mycities" element={<MyCities />}></Route>
           <Route path="/myhotels" element={<MyHotels />}></Route>
-          <Route path="/mytinerary/:id" element={<MyTinerary />}></Route>
-          <Route path="/myshow/:id" element={<MyShows />}></Route>
+            
+            <Route element={<ProtectedRoute isAllowed={role === "user"}/>}/>
+            <Route path="/mytinerary/:id" element={<MyTinerary />}></Route>
+            <Route path="/myshow/:id" element={<MyShows />}></Route>
         </Routes>
       </Layout>
       {/* useState(false) reemplazar window por set !reload */}
