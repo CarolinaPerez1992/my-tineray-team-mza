@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import axios from "axios"
 import Swal from "sweetalert2"
+import "../sign.css"
 import baseURL from "../url"
 import InputSignUp from "./InputSignUp";
 import ButtonSubmit from "./ButtonSubmit";
@@ -66,7 +67,7 @@ export default function FormSignUp() {
                                 <InputSignUp className="form__input" type='text' placeholder='Age' refId={age} />
                                 <InputSignUp className="form__input" type='email' placeholder='Email' refId={email} />
                                 <InputSignUp className="form__input" type='password' placeholder='Password' refId={password} />
-                                <ButtonSubmit text="Login with Google" className="submit2"></ButtonSubmit>
+                                <ButtonSubmit className="submit2"text="Login with Google" ></ButtonSubmit>
                                 <ButtonSubmit className="submit2" type='submit' text='Sign Up' fx={enviarFormulario} />
                                 </div>
                             </form>

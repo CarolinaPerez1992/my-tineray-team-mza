@@ -19,10 +19,23 @@ import MyTinerary from "./pages/MyTinerary";
 import MyShows from "./pages/MyShows";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
+import  {useDispatch} from "react-redux"
+import userAction from "./redux/actions/userAction";
+import { useEffect } from "react";
 
 function App() {
 
   let {logged, role } = useSelector(store => store.userReducer)
+  let dispatch = useDispatch()
+  let { reEntry } = userAction
+
+  let token = JSON.parse(localStorage.getItem('token'))
+  useEffect(() => {
+    console.log(token?.token.user)
+    if (token) {
+      dispatch(reEntry(token.token.user))
+    }
+  },[])
   return (
     <BrowserRouter>
       <AutoToTop />
