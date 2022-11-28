@@ -109,7 +109,9 @@ export default function NavBar() {
                 <NavLink to="/newtinerary" style={{ textDecoration: "none" }}>
                   <li>New Tinerary</li>
                 </NavLink>
+                <NavLink to="/" style={{ textDecoration: "none" }}>
                   <button onClick={logOut}>EXIT</button>
+                </NavLink>
               </div>
             )}
             {role === 'admin' && (
@@ -129,7 +131,6 @@ export default function NavBar() {
                 <NavLink to="/myhotels" style={{ textDecoration: "none" }}>
                   <li>My Hotels</li>
                 </NavLink>
-                <button onClick={logOut}>EXIT</button>
                 
               </>
             )}
@@ -144,4 +145,3 @@ export default function NavBar() {
 //   <img className="" width="100" src={logo} alt="" />
 // </Link>; */
 // }
-
