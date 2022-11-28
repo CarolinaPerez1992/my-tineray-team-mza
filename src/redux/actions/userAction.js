@@ -6,6 +6,7 @@ const login = createAsyncThunk("login", async (datos) => {
     let url = `${baseURL}api/auth/sign-in`
     try {
         let user = await axios.post(url, datos)
+        console.log(user);
         return {
             success: true,
             response: user.data.response,
@@ -16,16 +17,30 @@ const login = createAsyncThunk("login", async (datos) => {
         return {
             success: false,
             response: error.response.data.message
-
         }
     }
 });
-const exit = createAsyncThunk("exit", async (token) => {
-    let url = `${baseURL}api/auth/sign-out`
-    let headers = { headers: { "Authorization": `Bearer ${token}` } }
+const reEntry = createAsyncThunk('reEntry', async (token) => {
+    let headers = { headers: { 'Authorization': `Bearer ${token}` } }
     try {
-        let user = await axios.post(url, null, headers)
-        console.log(user.data);
+        let user = await axios.post(`${baseURL}api/auth/token`, null, headers)
+        return {
+            success: true,
+            response: user.data.response,
+            token: token,
+        }
+    } catch (error) {
+        console.log(error.response)
+        return {
+            success: false,
+            response: error.response.data.message
+        }
+    }
+});
+const exit = createAsyncThunk('exit', async (token) => {
+    let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+    try {
+        let user = await axios.post(`${baseURL}api/auth/sign-out`, null, headers)
         return {
             success: true,
             response: user.data.message
@@ -37,27 +52,36 @@ const exit = createAsyncThunk("exit", async (token) => {
             response: error.response.data.message
         }
     }
-}
-);
-const reEntry = createAsyncThunk('reEnter', async (token) => {
-    let headers = { headers: { 'Authorization': `Bearer ${token}` } }
+});
+const updateMyProfile = createAsyncThunk("updateMyProfile", async (data) => {
     try {
-        let user = await axios.post(`${baseURL}api/auth/token`, null, headers)
-        console.log(user)
+        const response = await axios.patch(`${baseURL}api/auth/me/${data.id}`, data.user);
+        console.log(response)
+        return response.data.data;
+    }
+    catch (error) {
+        console.log(error)
+        return {
+            payload: 'An error has ocurred'
+        }
+    }
+
+});
+
+const doUser = createAsyncThunk("doUser", async (id) => {
+    try {
+        let res = await axios.get(`${baseURL}api/auth/me/${id}`);
         return {
             success: true,
-            response: {
-                user: user.data.response.user,
-                token,
-            }
-        }
+            response: res.data.data,
 
+        };
     } catch (error) {
-        console.log(error.response)
+        console.log(error);
         return {
             success: false,
-            response: error.response.data.message
-        }
+            response: "An error has ocurred",
+        };
     }
 });
 
@@ -65,7 +89,9 @@ const reEntry = createAsyncThunk('reEnter', async (token) => {
 const userAction = {
     login,
     exit,
-    reEntry
+    reEntry,
+    updateMyProfile,
+    doUser
 
 }
 export default userAction

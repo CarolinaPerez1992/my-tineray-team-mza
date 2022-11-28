@@ -27,7 +27,7 @@ export default function NavBar() {
   let menu = () => {
     setMostrarMenu(!mostrarMenu);
   };
-  function logOut(e) {
+  function logOut() {
     Swal.fire({
       title: 'Are you sure you want to log out?',
       text: "You won't be able to revert this!",
@@ -103,21 +103,26 @@ export default function NavBar() {
               </>
             )}
 
-            {logged && (
+            {logged && role === 'user' &&(
               <div>
+                <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+                  <li>My Profile</li>
+                </NavLink>
                 <NavLink to="/mytinerary" style={{ textDecoration: "none" }}>
                   <li>My Tinerary</li>
                 </NavLink>
                 <NavLink to="/myshow" style={{ textDecoration: "none" }}>
                   <li>My Shows</li>
                 </NavLink>
-                <NavLink to="/" style={{ textDecoration: "none" }}>
                   <button onClick={logOut}>EXIT</button>
-                </NavLink>
+                
               </div>
             )}
             {role === 'admin' && (
               <>
+              <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+                  <li>My Profile</li>
+                </NavLink>
                 <NavLink to="/newcity" style={{ textDecoration: "none" }}>
                   <li>New City</li>
                 </NavLink>

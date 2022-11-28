@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import userActions from '../actions/userAction'
 
 
-const { login, reEntry, exit } = userActions
+const { login, reEntry, exit, updateMyProfile, doUser } = userActions
 const initialState = {
     user: [],
     name: "",
@@ -10,7 +10,9 @@ const initialState = {
     email: "",
     logged: false,
     token: "",
-    role: ""
+    role: "",
+    id: "",
+    myUser: {}
 
 }
 
@@ -26,6 +28,7 @@ const userReducer = createReducer(initialState,
                     localStorage.setItem("token", JSON.stringify({ token: { user: token } }))
                     let newState = {
                         ...state,
+                        id: user.id,
                         name: user.name,
                         email: user.email,
                         photo: user.photo,
@@ -47,7 +50,7 @@ const userReducer = createReducer(initialState,
             })
             .addCase(reEntry.fulfilled, (state, action) => {
                 const { success, response } = action.payload
-                let {user, token} = response
+                let { user, token } = response
                 if (success) {
                     let newState = {
                         ...state,
@@ -55,7 +58,9 @@ const userReducer = createReducer(initialState,
                         photo: user.photo,
                         role: user.role,
                         logged: true,
-                        token
+                        token: token,
+                        myUser: user,
+                        id: user.id
                     }
                     return newState
                 } else {
@@ -87,6 +92,16 @@ const userReducer = createReducer(initialState,
                     return newState
                 }
             })
+            .addCase(updateMyProfile.fulfilled, (state, action) => {
+                console.log(action.payload)
+                return { ...state, myUser: action.payload }
+            })
 
+            .addCase(doUser.fulfilled, (state, action) => {
+                return {
+                    ...state,
+                    myUser: action.payload.response,
+                };
+            })
         })
 export default userReducer
