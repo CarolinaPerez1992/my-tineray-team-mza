@@ -35,6 +35,7 @@ const userReducer = createReducer(initialState,
                         role: user.role,
                         logged: true,
                         token: token,
+                        id: user.id
 
 
 

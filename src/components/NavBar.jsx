@@ -9,7 +9,7 @@ import "../index.css";
 import { useSelector, useDispatch } from "react-redux"
 import Swal from "sweetalert2"
 import userAction from "../redux/actions/userAction"
-import out from "../img/iniciar-sesion.png"
+
 
 
 
@@ -114,6 +114,11 @@ export default function NavBar() {
                 <NavLink to="/myshow" style={{ textDecoration: "none" }}>
                   <li>My Shows</li>
                 </NavLink>
+                <NavLink to="/newtinerary" style={{ textDecoration: "none" }}>
+                  <li>New Tinerary</li>
+                </NavLink>
+                <NavLink to="/" style={{ textDecoration: "none" }}>
+
                   <button onClick={logOut}>EXIT</button>
                 
               </div>
