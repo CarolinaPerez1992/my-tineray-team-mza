@@ -18,6 +18,7 @@ import NewTinerary from "./pages/NewTinerary";
 import MyHotels from "./pages/MyHotels";
 import MyTinerary from "./pages/MyTinerary";
 import MyShows from "./pages/MyShows";
+import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
 import  {useDispatch} from "react-redux"
@@ -46,22 +47,37 @@ function App() {
           <Route path="/hotels" element={<Hotel />}></Route>
           <Route path="/cities" element={<Cities />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
-
-          <Route path="/sign-up" element={logged ?<Home/> : <SignUp />}></Route>
-          <Route path="/sign-in" element={logged ?<Home/> : <SignIn />}></Route>
           <Route path="/detailcity/:id" element={<DetailCity />}></Route>
           <Route path="/detailhotel/:id" element={<DetailHotel />}></Route>
+
+
+
+
+          { logged && (
+          <Route element={<ProtectedRoute isAllowed={logged} reDirect="/" />}>
+            <Route path="/myprofile" element={<Profile />} />
+          </Route>
+        )}
+        <Route element={<ProtectedRoute isAllowed={role === "admin"} reDirect="/" />}></Route>
+        {/* //raro */}
+          <Route path="/sign-up" element={logged ?<Home/> : <SignUp />}></Route>
+          <Route path="/sign-in" element={logged ?<Home/> : <SignIn />}></Route>
           
-          <Route element={<ProtectedRoute isAllowed={role === "admin"}/>}/>
+          <Route element={<ProtectedRoute isAllowed={role === "admin"} />} />
           <Route path="/newcity" element={<NewCity />}></Route>
           <Route path="/newhotel" element={<NewHotel />}></Route>
           <Route path="/mycities" element={<MyCities />}></Route>
           <Route path="/myhotels" element={<MyHotels />}></Route>
+
+          
+          
+          
             
           <Route element={<ProtectedRoute isAllowed={role === "user"} reDirect="/" />}></Route>
             <Route path="/mytinerary/:id" element={<MyTinerary />}></Route>
             <Route path="/myshow/:id" element={<MyShows />}></Route>
             <Route path="/newtinerary/" element={<NewTinerary />}></Route>
+
         </Routes>
       </Layout>
       {/* useState(false) reemplazar window por set !reload */}
