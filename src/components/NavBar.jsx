@@ -9,7 +9,6 @@ import "../index.css";
 import { useSelector, useDispatch } from "react-redux"
 import Swal from "sweetalert2"
 import userAction from "../redux/actions/userAction"
-import out from "../img/iniciar-sesion.png"
 
 
 
@@ -103,7 +102,7 @@ export default function NavBar() {
               </>
             )}
 
-            {logged && role === 'user' &&(
+            {logged &&(
               <div>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
