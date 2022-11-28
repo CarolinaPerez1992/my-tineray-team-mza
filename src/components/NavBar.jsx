@@ -109,6 +109,9 @@ export default function NavBar() {
                 <NavLink to="/newtinerary" style={{ textDecoration: "none" }}>
                   <li>New Tinerary</li>
                 </NavLink>
+                <NavLink to="/newshow" style={{ textDecoration: "none" }}>
+                  <li>New Shows</li>
+                </NavLink>
                   <button onClick={logOut}>EXIT</button>
               </div>
             )}

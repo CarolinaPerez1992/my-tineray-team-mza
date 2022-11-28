@@ -24,6 +24,7 @@ import  {useDispatch} from "react-redux"
 import userAction from "./redux/actions/userAction";
 import { useEffect } from "react";
 import MyTinerary from "./pages/MyTinerary"
+import NewShow from "./pages/NewShow"
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
             <Route path="/mytinerary/:id" element={<MyTinerary />}></Route>
             <Route path="/myshow/:id" element={<MyShows />}></Route>
             <Route path="/newtinerary/" element={<NewTinerary />}></Route>
+            <Route path="/newshow" element={<NewShow />} />
             <Route path="/myprofile" element={<Profile />} />
 
         </Routes>
