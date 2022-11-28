@@ -10,7 +10,8 @@ const initialState = {
     email: "",
     logged: false,
     token: "",
-    role: ""
+    role: "",
+    id:""
 
 }
 
@@ -32,6 +33,7 @@ const userReducer = createReducer(initialState,
                         role: user.role,
                         logged: true,
                         token: token,
+                        id: user.id
 
 
 
@@ -55,7 +57,8 @@ const userReducer = createReducer(initialState,
                         photo: user.photo,
                         role: user.role,
                         logged: true,
-                        token
+                        token,
+                        id: user.id
                     }
                     return newState
                 } else {
