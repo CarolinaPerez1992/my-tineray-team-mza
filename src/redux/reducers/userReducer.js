@@ -1,7 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
 import userActions from '../actions/userAction'
-
-
 const { login, reEntry, exit, updateMyProfile, doUser } = userActions
 const initialState = {
     user: [],
@@ -11,10 +9,12 @@ const initialState = {
     logged: false,
     token: "",
     role: "",
-    id: "",
+    id:"",
     myUser: {}
 
 }
+
+
 
 
 const userReducer = createReducer(initialState,
@@ -28,16 +28,13 @@ const userReducer = createReducer(initialState,
                     localStorage.setItem("token", JSON.stringify({ token: { user: token } }))
                     let newState = {
                         ...state,
-                        id: user.id,
                         name: user.name,
                         email: user.email,
                         photo: user.photo,
                         role: user.role,
                         logged: true,
                         token: token,
-
-
-
+                        id: user.id,
                     }
                     return newState
                 } else {
@@ -71,6 +68,7 @@ const userReducer = createReducer(initialState,
                     return newState
                 }
             })
+
             .addCase(exit.fulfilled, (state, action) => {
                 const { success, response } = action.payload
                 if (success) {
@@ -103,5 +101,7 @@ const userReducer = createReducer(initialState,
                     myUser: action.payload.response,
                 };
             })
+
+
         })
 export default userReducer
