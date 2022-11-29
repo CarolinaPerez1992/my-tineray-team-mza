@@ -13,10 +13,11 @@ const getTineraryUser = createAsyncThunk('getTineraryUser', async(id) => {
 }
 })
 
-const deleteTinerary = createAsyncThunk('deleteTinerary', async(id) => {
+const deleteTinerary = createAsyncThunk('deleteTinerary', async({id, token}) => {
+    let headers = {headers:{Authorization: `Bearer ${token}`}}
     try{
-        const res = await axios.delete(`${baseURL}api/itineraries/${id}`)
-        return res.data
+        const res = await axios.delete(`${baseURL}api/itineraries/${id}`, headers)
+        return res.data.data
 }catch(error){
     return {
         payload: "Error"
@@ -24,10 +25,11 @@ const deleteTinerary = createAsyncThunk('deleteTinerary', async(id) => {
 }
 })
 
-const updateTinerary = createAsyncThunk('updateTinerary', async(data) => {
+const updateTinerary = createAsyncThunk('updateTinerary', async({data, token}) => {
+let headers = {headers: {Authorization: `Bearer ${token}`}} 
     try{
-        const res = await axios.put(`${baseURL}api/itineraries/${data.id}`, data.tineraries)
-        return res.data
+        const res = await axios.put(`${baseURL}api/itineraries/${data.id}`, data.tineraries, headers)
+        return res.data.data
 }catch(error){
     return {
         payload: "Error"

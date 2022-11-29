@@ -1,6 +1,6 @@
 import React from "react";
 import "../card2.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import citiesActions from "../redux/actions/citiesActions"
 import Swal from "sweetalert2";
 
@@ -8,6 +8,7 @@ export default function MyCard(props) {
   let {datos} = props
 const dispatch = useDispatch()
 const {deleteCity, updateCity} = citiesActions
+const {token} = useSelector(store => store.userReducer)
 
 async function deleteAdmin() {
     try {
@@ -26,7 +27,7 @@ async function deleteAdmin() {
                     'Your file has been deleted.',
                     'success'
                 )
-                dispatch(deleteCity(datos._id))
+                dispatch(deleteCity({id:datos._id, token}))
                 window.location.reload()
             }
         })
@@ -76,7 +77,7 @@ async function updateAdmin() {
                     data.citie.population = population
                 }
 
-                dispatch(updateCity(data))
+                dispatch(updateCity({data, token}))
             }
         })
 
@@ -105,3 +106,4 @@ async function updateAdmin() {
     </>
   );
 }
+

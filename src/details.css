@@ -1,5 +1,7 @@
 .cardEvents {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .cardDetPadre {
@@ -20,6 +22,7 @@
   background-color: #1f6e6b;
   border-radius: 20px;
   box-shadow: 0 5px 10px #000;
+  margin: 1rem;
 }
 
 .contimg {
