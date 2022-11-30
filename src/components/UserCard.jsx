@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import userActions from '../redux/actions/userAction';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
+import "../shows.css"
 
 export default function Details() {
     const dispatch = useDispatch()
@@ -58,17 +59,17 @@ export default function Details() {
     }
 
     return (
-        <div className='container-card'>
-            <div className="card">
-                <div className="imgbox">
-                    <div className="img"> <img src={myUser.photo} alt="photo_user" /></div>
+        <div className='divShow'>
+            <div className="mainShow">
+                <div className="imgshow">
+                    <img src={myUser.photo} alt="photo_user" />
                 </div>
-                <div className="details">
-                    <h2 className="title">{myUser.name}</h2>
-                    <h2 className="title">{myUser.lastName}</h2>
-                    <h2 className="title">{myUser.age}</h2>
+                <div className="divInfo">
+                    <h2 className="">{myUser.name}</h2>
+                    <h2 className="">{myUser.lastName}</h2>
+                    <h2 className="">{myUser.age} años</h2>
                     <div>
-                        <button className='bottom-cards' onClick={updateUser} >Update Profile</button>
+                        <button className='btn' onClick={updateUser} >Update Profile</button>
                     </div>
                 </div>
             </div>

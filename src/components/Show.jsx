@@ -15,6 +15,7 @@ export default function Show(props) {
             <h3 className="">{show.name} </h3>
             <h4>{show.description}</h4>
             <h4>Price: U$D{show.price} </h4>
+            <button className="submit1" >View Comments</button>
           </div>
         </div>
       </div>

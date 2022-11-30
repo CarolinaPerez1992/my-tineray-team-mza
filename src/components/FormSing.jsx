@@ -36,7 +36,6 @@ export default function FormSign() {
         .then(result=>{
           if(result.isConfirmed){
               navigate("/")
-              localStorage.setItem('user', JSON.stringify(user))
           }
         })
       }else {

@@ -1,21 +1,19 @@
 import { createReducer } from "@reduxjs/toolkit";
-import userActions from '../actions/userAction'
-const { login, reEntry, exit, updateMyProfile, doUser } = userActions
+import userAction from '../actions/userAction'
+
+const { login, reEntry, exit, updateMyProfile, doUser } = userAction
 const initialState = {
     user: [],
     name: "",
     photo: "",
     email: "",
-    logged: false,
     token: "",
     role: "",
     id:"",
+    logged: false,
     myUser: {}
 
 }
-
-
-
 
 const userReducer = createReducer(initialState,
     (builder) => {
@@ -46,9 +44,10 @@ const userReducer = createReducer(initialState,
                 }
             })
             .addCase(reEntry.fulfilled, (state, action) => {
-                const { success, response } = action.payload
-                let { user, token } = response
+                const { success, response, token} = action.payload
+                // let { user, token } = response
                 if (success) {
+                    let{user} = response
                     let newState = {
                         ...state,
                         name: user.name,

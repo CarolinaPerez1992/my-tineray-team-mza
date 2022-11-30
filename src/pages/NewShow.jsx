@@ -63,36 +63,21 @@ export default function NewShow() {
         }
     }
     return (
-        <div className="body-form">
-        <div id="container">
-            <section>
-                <article>
-                    <div className="inner">
-                        <div>
-                            <img id="logoAccess" src="./img/new-show-logo.png" alt="logo_access" />
-                        </div>
-                    </div>
-                </article>
-                <aside>
-                    <div className="inner">
-                        <h2>Create a New Show:</h2>
-                        <form action="" method="get" ref={form}>
-                            <InputSignUp className="input-text" type="text" placeholder="Name" refId={name} />
-                            <select ref={hotelId} id="hotelId">
+        <form className="form" action="" method="get" ref={form}>
+        <div className="form-body">
+        <h3 className="title">New Show</h3>
+                            <InputSignUp className="form__input" type="text" placeholder="Name" refId={name} />
+                            <select className="form__input" ref={hotelId} id="hotelId">
                                 <option>Select the hotel</option>
                                 {hotels.map((hotel) => (<option key={hotel._id} value={hotel._id}> {hotel.name}</option>))}
                             </select>
-                            <InputSignUp className="input-text" type="text" placeholder=" Photo" refId={photo} />
-                            <InputSignUp className="input-text" type="text" placeholder=" Description" refId={description} />
-                            <InputSignUp className="input-text" type="text" placeholder=" Price" refId={price} />
-                            <InputSignUp className="input-text" type="date" placeholder=" date" refId={date} />
-                            <button type='submit' onClick={createShow}>Sign Up</button>
+                            <InputSignUp className="form__input" type="text" placeholder=" Photo" refId={photo} />
+                            <InputSignUp className="form__input" type="text" placeholder=" Description" refId={description} />
+                            <InputSignUp className="form__input" type="text" placeholder=" Price" refId={price} />
+                            <InputSignUp className="form__input" type="date" placeholder=" date" refId={date} />
+                            <button type='submit' onClick={createShow} className="submit2">Sign Up</button>
+                            </div>
                         </form>
-                    </div>
-                </aside>
-            </section>
-        </div>
-    </div>
             )
         }
     

@@ -20,11 +20,13 @@ export default function NavBar() {
   const navegate = useNavigate()
   let { exit } = userAction
   let { role, logged, token } = useSelector(state => state.userReducer)
+  console.log(role)
+  console.log(logged)
+  console.log(token)
   let [mostrar, setMostrarOcultar] = useState(true);
   let change = () => {
     setMostrarOcultar(!mostrar);
-  };
-  console.log(role);
+  }
   let [mostrarMenu, setMostrarMenu] = useState(false);
   let menu = () => {
     setMostrarMenu(!mostrarMenu);
@@ -43,7 +45,6 @@ export default function NavBar() {
         if (result.isConfirmed) {
           dispatch(exit(token))
           localStorage.removeItem("token")
-          localStorage.removeItem("user")
           navegate("/")
           Swal.fire(
             'Logged out!',
@@ -101,7 +102,7 @@ export default function NavBar() {
                 </Link>
               </>
             )}
-            {logged && (
+            {role === 'user' && logged &&(
               <>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
@@ -123,7 +124,7 @@ export default function NavBar() {
             )}
 
 
-            {role == 'undefined' && (
+            {role === 'admin' && logged &&(
               <>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
@@ -141,7 +142,6 @@ export default function NavBar() {
                   <li>My Hotels</li>
                 </NavLink>
                 <button onClick={logOut}>EXIT</button>
-
               </>
             )}
           </div>
