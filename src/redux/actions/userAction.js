@@ -56,7 +56,7 @@ const exit = createAsyncThunk('exit', async (token) => {
 });
 const updateMyProfile = createAsyncThunk("updateMyProfile", async (data) => {
     try {
-        const response = await axios.patch(`${baseURL}api/auth/me/${data.id}`, data.user);
+        const response = await axios.patch(`${baseURL}api/auth/me/${data.id}`, data.user)
         console.log(response)
         return response.data.data;
     }
@@ -71,7 +71,8 @@ const updateMyProfile = createAsyncThunk("updateMyProfile", async (data) => {
 
 const doUser = createAsyncThunk("doUser", async (id) => {
     try {
-        let res = await axios.get(`${baseURL}api/auth/me/${id}`);
+        let res = await axios.get(`${baseURL}api/auth/me/${id}`)
+        console.log(id)
         return {
             success: true,
             response: res.data.data,

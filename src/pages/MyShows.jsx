@@ -9,11 +9,10 @@ export default function MyShows() {
   const dispatch = useDispatch();
   const { showsUser } = useSelector((state) => state.showReducer);
   const { getShowUser } = showActions;
-
-  let userId = "636e78ac2ebb17b28fb470a2";
+  const {id} = useSelector(store=> store.userReducer)
 
   useEffect(() => {
-    dispatch(getShowUser(userId));
+    dispatch(getShowUser(id));
     // eslint-disable-next-line
   }, []);
   return (
@@ -21,7 +20,7 @@ export default function MyShows() {
       <div className="cont-card">
         {showsUser.length > 0 ? (
           showsUser.map((cadaShow, id) => {
-            return <MyCardShows datos={cadaShow} key={id} id={cadaShow._id} />;
+            return <MyCardShows datos={cadaShow} key={id} id={id} />;
           })
         ) : (
           <NotElementFound />

@@ -31,12 +31,12 @@ function App() {
   let {logged, role } = useSelector(store => store.userReducer)
   let dispatch = useDispatch()
   let { reEntry } = userAction
-console.log(logged)
+
   let token = JSON.parse(localStorage.getItem('token'))
   useEffect(() => {
-    console.log(token)
+    console.log(token?.token.user)
     if (token) {
-      dispatch(reEntry(token?.token?.user))
+      dispatch(reEntry(token.token.user))
     }
   },[logged])
   return (
@@ -53,21 +53,21 @@ console.log(logged)
           <Route path="/detailcity/:id" element={<DetailCity />}></Route>
           <Route path="/detailhotel/:id" element={<DetailHotel />}></Route>
 
-          <Route element={<ProtectedRoute isAllowed={role === "admin"}/>}/>
+          <Route element={<ProtectedRoute isAllowed={role === "admin"}/>}></Route>
           <Route path="/newcity" element={<NewCity />}></Route>
           <Route path="/newhotel" element={<NewHotel />}></Route>
           <Route path="/mycities" element={<MyCities />}></Route>
           <Route path="/myhotels" element={<MyHotels />}></Route>
-          <Route path="/myprofile" element={<Profile />} />
+          <Route path="/myprofile" element={<Profile />}></Route>
 
 
+          {/* <Route element={<ProtectedRoute isAllowed={role === "user"}/>}/> */}
           <Route element={<ProtectedRoute isAllowed={role === "user"} reDirect="/" />}></Route>
             <Route path="/mytinerary" element={<MyTinerary />}></Route>
             <Route path="/myshow" element={<MyShows />}></Route>
             <Route path="/newtinerary" element={<NewTinerary />}></Route>
             <Route path="/newshow" element={<NewShow />} />
-    
-    
+            <Route path="/myprofile" element={<Profile />} />
 
         </Routes>
       </Layout>

@@ -13,10 +13,11 @@ const getShowUser = createAsyncThunk('getShowUser', async(id) => {
 }
 })
 
-const deleteShow = createAsyncThunk('deleteShow', async(id) => {
+const deleteShow = createAsyncThunk('deleteShow', async({id, token}) => {
+    let headers = {headers:{Authorization: `Bearer ${token}`}}
     try{
-        const res = await axios.delete(`${baseURL}api/shows/${id}`)
-        return res.data
+        const res = await axios.delete(`${baseURL}api/shows/${id}`, headers)
+        return res.data.data
 }catch(error){
     return {
         payload: "Error"
@@ -24,10 +25,11 @@ const deleteShow = createAsyncThunk('deleteShow', async(id) => {
 }
 })
 
-const updateShow = createAsyncThunk('updateShow', async(data) => {
+const updateShow = createAsyncThunk('updateShow', async({data, token}) => {
+    let headers = {headers:{Authorization: `Bearer ${token}`}}
     try{
-        const res = await axios.patch(`${baseURL}api/shows/${data.id}`, data.showsUser)
-        return res.data
+        const res = await axios.patch(`${baseURL}api/shows/${data.id}`, headers)
+        return res.data.data
 }catch(error){
     return {
         payload: "Error"

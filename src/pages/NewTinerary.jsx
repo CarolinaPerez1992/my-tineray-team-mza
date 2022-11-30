@@ -4,7 +4,6 @@ import InputSignUp from '../components/InputSignUp'
 import ButtonSubmit from '../components/ButtonSubmit';
 import axios from 'axios';
 import "../details.css";
-import FormSign from "../components/FormSing";
 import Swal from 'sweetalert2';
 import { baseURL } from "../url";
 import { useSelector } from "react-redux";
@@ -70,24 +69,12 @@ export default function NewTinerary() {
     }
 console.log(id)
     return (
-        <div className="">
-            <div id="container" className="form-body">
-                <section>
-                    <article>
-                        <div className="">
-                            <h1>New Tinerary</h1>
-                        </div>
-                    </article>
-                    <aside>
-                        <div className="inner">
-                            <h2>Create Account</h2>
-                            <nav id="socialLogin">
-                                <a href="" className="google"></a>
-                            </nav>
-                            <p>or use your email for Registration</p>
-                            <form action="" method="get" ref={form}>
-                                <InputSignUp className="input-text" type="text" placeholder="Name" refId={name} />
-                                <select ref={citiId} id="cityId">
+        <form className="form" action="" method="get" ref={form}>
+        <div className="form-body">
+        <h3 className="title">New Itinerary</h3>
+
+                                <InputSignUp className="form__input" type="text" placeholder="Name" refId={name} />
+                                <select className="form__input" ref={citiId} id="cityId">
                                     <option>Select the city</option>
                                     {cities.map((city) => (<option key={city._id} value={city._id}> {city.name}</option>))}
                                 </select>
@@ -98,11 +85,7 @@ console.log(id)
                                 <InputSignUp className="form__input" type="text" placeholder=" Price" refId={price} />
                                 <InputSignUp className="form__input" type="text" placeholder=" Duration" refId={duration} />
                                 <ButtonSubmit type='submit' text='Create' fx={createTinerary} />
-                            </form>
                         </div>
-                    </aside>
-                </section>
-            </div>
-        </div>
+                        </form>
     )
 }

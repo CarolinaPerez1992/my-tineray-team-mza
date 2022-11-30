@@ -1,6 +1,6 @@
 import React from "react";
 import "../card2.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import showActions from "../redux/actions/showActions"
 import Swal from "sweetalert2";
 
@@ -8,6 +8,7 @@ export default function MyCardShows(props) {
   let {datos} = props
 const dispatch = useDispatch()
 const {deleteShow, updateShow} = showActions
+const {token} = useSelector(store=> store.userReducer)
 
 async function deleteUser() {
     try {
@@ -26,7 +27,7 @@ async function deleteUser() {
                     'Your file has been deleted.',
                     'success'
                 )
-                dispatch(deleteShow(datos._id))
+                dispatch(deleteShow({id:datos._id, token}))
                 window.location.reload();
             }
         })
@@ -74,7 +75,7 @@ async function updateUser() {
                 }
      
 
-                dispatch(updateShow(data))
+                dispatch(updateShow({data, token}))
                 window.location.reload();
             }
         })

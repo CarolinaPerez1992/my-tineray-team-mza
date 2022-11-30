@@ -17,7 +17,9 @@ export default function Itinerary(props) {
             <h3> {event.name} </h3>
             <h5>{event.description}</h5>
             <h5>Price: U$D{event.price} </h5>
+            <button className="submit1" >View Comments</button>
           </div>
+          
         </div>
       </div>
     </>
