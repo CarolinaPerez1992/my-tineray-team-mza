@@ -22,6 +22,7 @@ export default function FormSign() {
     let user = {
       email,
       password
+    
     }
     try {
       let res = await dispatch(login(user))

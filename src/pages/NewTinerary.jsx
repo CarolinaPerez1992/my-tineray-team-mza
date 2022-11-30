@@ -41,6 +41,7 @@ export default function NewTinerary() {
             duration: duration.current.value,
             userId: id,
         }
+        console.log()
         let header = { headers: { Authorization: `Bearer ${token}` } };
         try {
             let response = await axios.post(`${baseURL}api/itineraries/`, newtinerary, header)
@@ -67,7 +68,7 @@ export default function NewTinerary() {
             console.log(error)
         }
     }
-
+console.log(id)
     return (
         <div className="">
             <div id="container" className="form-body">

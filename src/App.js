@@ -31,14 +31,14 @@ function App() {
   let {logged, role } = useSelector(store => store.userReducer)
   let dispatch = useDispatch()
   let { reEntry } = userAction
-
+console.log(logged)
   let token = JSON.parse(localStorage.getItem('token'))
   useEffect(() => {
-    console.log(token?.token.user)
+    console.log(token)
     if (token) {
-      dispatch(reEntry(token.token.user))
+      dispatch(reEntry(token?.token?.user))
     }
-  },[])
+  },[logged])
   return (
     <BrowserRouter>
       <AutoToTop />
@@ -61,13 +61,13 @@ function App() {
           <Route path="/myprofile" element={<Profile />} />
 
 
-          <Route element={<ProtectedRoute isAllowed={role === "user"}/>}/>
           <Route element={<ProtectedRoute isAllowed={role === "user"} reDirect="/" />}></Route>
-            <Route path="/mytinerary/:id" element={<MyTinerary />}></Route>
-            <Route path="/myshow/:id" element={<MyShows />}></Route>
-            <Route path="/newtinerary/" element={<NewTinerary />}></Route>
+            <Route path="/mytinerary" element={<MyTinerary />}></Route>
+            <Route path="/myshow" element={<MyShows />}></Route>
+            <Route path="/newtinerary" element={<NewTinerary />}></Route>
             <Route path="/newshow" element={<NewShow />} />
-            <Route path="/myprofile" element={<Profile />} />
+    
+    
 
         </Routes>
       </Layout>

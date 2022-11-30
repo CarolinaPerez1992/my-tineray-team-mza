@@ -9,13 +9,12 @@ export default function MyTinerary() {
   const dispatch = useDispatch();
   const { tinerariesAdmin } = useSelector((state) => state.tineraryReducer);
   const { getTineraryUser } = tinerariesActions;
+const {id} = useSelector(store=> store.userReducer)
 
-  let userId = "636e78ac2ebb17b28fb470a2";
-  let citiId = "636e9b452367c51ce27eb194"
   
 
   useEffect(() => {
-    dispatch(getTineraryUser(userId));
+    dispatch(getTineraryUser(id));
     // eslint-disable-next-line
   }, []);
 
@@ -29,7 +28,7 @@ export default function MyTinerary() {
                 datos={cadaPerfil}
                 key={id}
                 id={cadaPerfil._id}
-                idAdm={userId}
+                idAdm={id}
               />
             );
           })

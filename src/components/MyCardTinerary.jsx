@@ -1,6 +1,6 @@
 import React from "react";
 import "../card2.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import tinerariesActions from "../redux/actions/tinerariesActions"
 import Swal from "sweetalert2";
 
@@ -8,7 +8,7 @@ export default function MyCard(props) {
   let {datos} = props
 const dispatch = useDispatch()
 const {deleteTinerary, updateTinerary} = tinerariesActions
-
+const {token} = useSelector(store=> store.userReducer)
 async function deleteUser() {
     try {
         Swal.fire({
@@ -26,7 +26,7 @@ async function deleteUser() {
                     'Your file has been deleted.',
                     'success'
                 )
-                dispatch(deleteTinerary(datos._id))
+                dispatch(deleteTinerary({id: datos._id, token}))
                 window.location.reload()
             }
         })
@@ -100,7 +100,7 @@ async function updateAdmin() {
                     data.tineraries.photo = datos.photo;
                   }
 
-                dispatch(updateTinerary(data))
+                dispatch(updateTinerary({data, token}))
                 window.location.reload();
             }
         })

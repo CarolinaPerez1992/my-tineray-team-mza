@@ -9,6 +9,7 @@ import "../index.css";
 import { useSelector, useDispatch } from "react-redux"
 import Swal from "sweetalert2"
 import userAction from "../redux/actions/userAction"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -16,12 +17,14 @@ import userAction from "../redux/actions/userAction"
 
 export default function NavBar() {
   const dispatch = useDispatch()
+  const navegate = useNavigate()
   let { exit } = userAction
   let { role, logged, token } = useSelector(state => state.userReducer)
   let [mostrar, setMostrarOcultar] = useState(true);
   let change = () => {
     setMostrarOcultar(!mostrar);
   };
+  console.log(role);
   let [mostrarMenu, setMostrarMenu] = useState(false);
   let menu = () => {
     setMostrarMenu(!mostrarMenu);
@@ -39,6 +42,9 @@ export default function NavBar() {
       .then((result) => {
         if (result.isConfirmed) {
           dispatch(exit(token))
+          localStorage.removeItem("token")
+          localStorage.removeItem("user")
+          navegate("/")
           Swal.fire(
             'Logged out!',
             'You have been logged out',
@@ -96,7 +102,7 @@ export default function NavBar() {
               </>
             )}
             {logged && (
-              <div>
+              <>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
@@ -112,12 +118,14 @@ export default function NavBar() {
                 <NavLink to="/newshow" style={{ textDecoration: "none" }}>
                   <li>New Shows</li>
                 </NavLink>
-                  <button onClick={logOut}>EXIT</button>
-              </div>
+                <button onClick={logOut}>EXIT</button>
+           </>
             )}
-            {role === 'admin' && (
+
+
+            {role == 'undefined' && (
               <>
-              <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+                <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
                 <NavLink to="/newcity" style={{ textDecoration: "none" }}>
@@ -133,7 +141,7 @@ export default function NavBar() {
                   <li>My Hotels</li>
                 </NavLink>
                 <button onClick={logOut}>EXIT</button>
-                
+
               </>
             )}
           </div>

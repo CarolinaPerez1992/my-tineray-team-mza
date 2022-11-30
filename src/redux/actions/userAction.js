@@ -41,6 +41,7 @@ const exit = createAsyncThunk('exit', async (token) => {
     let headers = { headers: { 'Authorization': `Bearer ${token}` } }
     try {
         let user = await axios.post(`${baseURL}api/auth/sign-out`, null, headers)
+            localStorage.removeItem("token")
         return {
             success: true,
             response: user.data.message
