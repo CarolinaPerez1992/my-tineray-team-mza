@@ -25,7 +25,7 @@ export default function Reaction(props) {
     console.log(itineraryId)
     async function likeItinerary(e) {
         let name
-        let icon
+        let icon 
         let iconBack
         reactions.data.map(react => {
             if (react.name === e.target.name) {

@@ -26,6 +26,7 @@ import { useEffect } from "react";
 import MyTinerary from "./pages/MyTinerary"
 import NewShow from "./pages/NewShow"
 import NewReaction from "./pages/NewReaction"
+import MyReactions from "./pages/MyReactions"
 
 function App() {
 
@@ -59,8 +60,9 @@ function App() {
             <Route path="/newhotel" element={<NewHotel />}></Route>
             <Route path="/mycities" element={<MyCities />}></Route>
             <Route path="/myhotels" element={<MyHotels />}></Route>
-            <Route path="/myprofile" element={<Profile />}></Route>
+            {/* <Route path="/myprofile" element={<Profile />}></Route> */}
             <Route path="/newreaction" element={<NewReaction />}></Route>
+            {/* <Route path="/myreactions" element={<MyReactions />} /> */}
           </Route>
 
           {/* <Route element={<ProtectedRoute isAllowed={role === "user"}/>}/> */}
@@ -70,6 +72,7 @@ function App() {
             <Route path="/newtinerary" element={<NewTinerary />}></Route>
             <Route path="/newshow" element={<NewShow />} />
             <Route path="/myprofile" element={<Profile />} />
+            <Route path="/myreactions" element={<MyReactions />} />
           </Route>
         </Routes>
       </Layout>

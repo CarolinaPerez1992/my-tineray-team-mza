@@ -119,6 +119,9 @@ export default function NavBar() {
                 <NavLink to="/newshow" style={{ textDecoration: "none" }}>
                   <li>New Shows</li>
                 </NavLink>
+                <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
+                  <li>My Reactions</li>
+                </NavLink>
                 <button onClick={logOut}>EXIT</button>
            </>
             )}
@@ -144,6 +147,10 @@ export default function NavBar() {
                 <NavLink to="/newreaction" style={{ textDecoration: "none" }}>
                   <li>New Reaction</li>
                 </NavLink>
+                <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
+                  <li>My Reactions</li>
+                </NavLink>
+
                 <button onClick={logOut}>EXIT</button>
               </>
             )}
