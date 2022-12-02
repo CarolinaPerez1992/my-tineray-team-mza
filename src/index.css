@@ -310,3 +310,8 @@ li {
 .caja1{
   margin-bottom: 2rem;
 }
+
+.reactions{
+  display: flex;
+
+}

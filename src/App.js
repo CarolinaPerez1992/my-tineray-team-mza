@@ -20,15 +20,16 @@ import NewTinerary from "./pages/NewTinerary"
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useSelector } from "react-redux";
-import  {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux"
 import userAction from "./redux/actions/userAction";
 import { useEffect } from "react";
 import MyTinerary from "./pages/MyTinerary"
 import NewShow from "./pages/NewShow"
+import NewReaction from "./pages/NewReaction"
 
 function App() {
 
-  let {logged, role } = useSelector(store => store.userReducer)
+  let { logged, role } = useSelector(store => store.userReducer)
   let dispatch = useDispatch()
   let { reEntry } = userAction
 
@@ -38,7 +39,7 @@ function App() {
     if (token) {
       dispatch(reEntry(token.token.user))
     }
-  },[logged])
+  }, [logged])
   return (
     <BrowserRouter>
       <AutoToTop />
@@ -48,27 +49,28 @@ function App() {
           <Route path="/hotels" element={<Hotel />}></Route>
           <Route path="/cities" element={<Cities />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
-          <Route path="/sign-up" element={logged ?<Home/> : <SignUp />}></Route>
-          <Route path="/sign-in" element={logged ?<Home/> : <SignIn />}></Route>
+          <Route path="/sign-up" element={logged ? <Home /> : <SignUp />}></Route>
+          <Route path="/sign-in" element={logged ? <Home /> : <SignIn />}></Route>
           <Route path="/detailcity/:id" element={<DetailCity />}></Route>
           <Route path="/detailhotel/:id" element={<DetailHotel />}></Route>
 
-          <Route element={<ProtectedRoute isAllowed={role === "admin"}/>}></Route>
-          <Route path="/newcity" element={<NewCity />}></Route>
-          <Route path="/newhotel" element={<NewHotel />}></Route>
-          <Route path="/mycities" element={<MyCities />}></Route>
-          <Route path="/myhotels" element={<MyHotels />}></Route>
-          <Route path="/myprofile" element={<Profile />}></Route>
-
+          <Route element={<ProtectedRoute isAllowed={role === "admin"} />}>
+            <Route path="/newcity" element={<NewCity />}></Route>
+            <Route path="/newhotel" element={<NewHotel />}></Route>
+            <Route path="/mycities" element={<MyCities />}></Route>
+            <Route path="/myhotels" element={<MyHotels />}></Route>
+            <Route path="/myprofile" element={<Profile />}></Route>
+            <Route path="/newreaction" element={<NewReaction />}></Route>
+          </Route>
 
           {/* <Route element={<ProtectedRoute isAllowed={role === "user"}/>}/> */}
-          <Route element={<ProtectedRoute isAllowed={role === "user"} reDirect="/" />}></Route>
+          <Route element={<ProtectedRoute isAllowed={role === "user"} reDirect="/" />}>
             <Route path="/mytinerary" element={<MyTinerary />}></Route>
             <Route path="/myshow" element={<MyShows />}></Route>
             <Route path="/newtinerary" element={<NewTinerary />}></Route>
             <Route path="/newshow" element={<NewShow />} />
             <Route path="/myprofile" element={<Profile />} />
-
+          </Route>
         </Routes>
       </Layout>
       {/* useState(false) reemplazar window por set !reload */}

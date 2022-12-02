@@ -43,7 +43,12 @@ export default function DetailCity() {
       </div>
       <div className="cardEvents">
         {activities.length > 0 ? (
-          activities.map((e) => <Itinerary key={e._id} event={e} />)
+          activities.map((e) => {console.log(e); return(<Itinerary key={e._id} name={e.name} photo={e.photo} 
+          description={e.description}
+          price={e.price}
+          duration={e.duration}
+          id={e._id}
+          />)})
         ) : (
           <NotElementFound />
         )}
