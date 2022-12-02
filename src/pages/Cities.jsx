@@ -73,6 +73,7 @@ export default function Cities() {
                 id={index}
                 continent={continent}
                 valor={continent}
+                key={continent._id}
                 // refId={continentes[index]}
                 fx={filterSearch}
               />
@@ -90,7 +91,7 @@ export default function Cities() {
       </div>
       <div className="cont-card">
         {cities.length > 0 ? (cities.map((cadaCity, id) => {
-          return <CityCard datos={cadaCity} key={id} id={cadaCity._id}/>
+          return <CityCard datos={cadaCity} key={cadaCity._id} id={cadaCity._id}/>
           })):(<NotElementFound/>)
           }
       </div>
