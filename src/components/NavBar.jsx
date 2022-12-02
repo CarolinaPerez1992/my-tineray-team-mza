@@ -19,7 +19,8 @@ export default function NavBar() {
   const dispatch = useDispatch()
   const navegate = useNavigate()
   let { exit } = userAction
-  let { role, logged, token, name, photo} = useSelector(state => state.userReducer)
+  let { role, logged, token, name, photo } = useSelector(state => state.userReducer)
+
   console.log(role)
   console.log(logged)
   console.log(token)
@@ -102,12 +103,13 @@ export default function NavBar() {
                 </Link>
               </>
             )}
-            {role === 'user' && logged &&(
+            {role === 'user' && logged && (
               <>
-              <div className="profile">
-                <img className="imgprofile" src={photo} alt={name} />
-                <p>{name}</p>
-              </div>
+
+          <div className="users">
+            <img className="user-img" width="20" src={photo}  alt="logoUser" />
+            <p className='texto-nav-user'>{name}</p>
+          </div>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
@@ -124,11 +126,11 @@ export default function NavBar() {
                   <li>New Shows</li>
                 </NavLink>
                 <button onClick={logOut}>EXIT</button>
-           </>
+              </>
             )}
 
 
-            {role === 'admin' && logged &&(
+            {role === 'admin' && logged && (
               <>
            <div className="profile">
                 <img className="imgprofile" src={photo} alt={name} />
