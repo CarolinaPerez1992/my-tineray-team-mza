@@ -19,7 +19,7 @@ export default function NavBar() {
   const dispatch = useDispatch()
   const navegate = useNavigate()
   let { exit } = userAction
-  let { role, logged, token } = useSelector(state => state.userReducer)
+  let { role, logged, token, name, photo} = useSelector(state => state.userReducer)
   console.log(role)
   console.log(logged)
   console.log(token)
@@ -104,6 +104,10 @@ export default function NavBar() {
             )}
             {role === 'user' && logged &&(
               <>
+              <div className="profile">
+                <img className="imgprofile" src={photo} alt={name} />
+                <p>{name}</p>
+              </div>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
@@ -126,7 +130,11 @@ export default function NavBar() {
 
             {role === 'admin' && logged &&(
               <>
-                <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+           <div className="profile">
+                <img className="imgprofile" src={photo} alt={name} />
+                <p>{name}</p>
+              </div>
+              <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
                 <NavLink to="/newcity" style={{ textDecoration: "none" }}>

@@ -195,7 +195,6 @@ li {
 
 .footer {
   display: flex;
-  flex-direction: row-reverse;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
@@ -314,4 +313,14 @@ li {
 .reactions{
   display: flex;
 
+}
+
+.profile{
+  display: flex;
+  align-items: center;
+}
+
+.imgprofile{
+  border-radius: 70%;
+  margin-right: 10px;
 }
