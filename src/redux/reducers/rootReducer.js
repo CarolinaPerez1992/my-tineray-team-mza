@@ -4,6 +4,7 @@ import tineraryReducer from "./tineraryReducer";
 import showReducer from "./showReducer";
 import userReducer from "./userReducer";
 import reactionReducer from "./reactionReducer"
+import commentsReducers from './commentsReducers';
 
 const rootReducer = {
   cityReducer,
@@ -11,7 +12,8 @@ const rootReducer = {
   tineraryReducer,
   showReducer,
   userReducer,
-  reactionReducer
+  reactionReducer,
+  commentsReducers
 };
 
 export default rootReducer;

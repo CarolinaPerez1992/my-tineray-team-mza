@@ -1,5 +1,6 @@
 import React from "react";
 import "../shows.css";
+import CardShow from "./CardShow";
 export default function Show(props) {
   let { show } = props;
   console.log(show);
@@ -15,8 +16,11 @@ export default function Show(props) {
             <h3 className="">{show.name} </h3>
             <h4>{show.description}</h4>
             <h4>Price: U$D{show.price} </h4>
-            <button className="submit1" >View Comments</button>
+            <CardShow>
+          </CardShow>
           </div>
+     
+
         </div>
       </div>
     </>

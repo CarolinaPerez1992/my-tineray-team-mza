@@ -20,9 +20,6 @@ export default function Footer() {
       <div>
         <ScrollToTop />
       </div>
-      <div className="foot">
-        <CallToAction />
-      </div>
     </div>
   );
 }
