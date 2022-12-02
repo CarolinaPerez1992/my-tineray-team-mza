@@ -145,6 +145,9 @@ export default function NavBar() {
                 <NavLink to="/myhotels" style={{ textDecoration: "none" }}>
                   <li>My Hotels</li>
                 </NavLink>
+                <NavLink to="/newreaction" style={{ textDecoration: "none" }}>
+                  <li>New Reaction</li>
+                </NavLink>
                 <button onClick={logOut}>EXIT</button>
               </>
             )}

@@ -311,9 +311,6 @@ li {
   margin-bottom: 2rem;
 }
 
-
-
-
 .cta {
   position: relative;
   margin: auto;
@@ -479,4 +476,8 @@ li {
   align-items: center;
   flex-wrap: wrap;
   
+}
+.reactions{
+  display: flex;
+
 }
