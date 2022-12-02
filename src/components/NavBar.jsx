@@ -6,24 +6,59 @@ import usuario from "../img/usuario.png";
 import hambur from "../img/hambur.png";
 import { Link } from "react-router-dom";
 import "../index.css";
+import { useSelector, useDispatch } from "react-redux"
+import Swal from "sweetalert2"
+import userAction from "../redux/actions/userAction"
+import { useNavigate } from "react-router-dom";
+
+
+
+
 
 export default function NavBar() {
+  const dispatch = useDispatch()
+  const navegate = useNavigate()
+  let { exit } = userAction
+  let { role, logged, token } = useSelector(state => state.userReducer)
+  console.log(role)
+  console.log(logged)
+  console.log(token)
   let [mostrar, setMostrarOcultar] = useState(true);
   let change = () => {
     setMostrarOcultar(!mostrar);
-  };
-
+  }
   let [mostrarMenu, setMostrarMenu] = useState(false);
   let menu = () => {
     setMostrarMenu(!mostrarMenu);
   };
-
+  function logOut(e) {
+    Swal.fire({
+      title: 'Are you sure you want to log out?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, log out!'
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          dispatch(exit(token))
+          localStorage.removeItem("token")
+          navegate("/")
+          Swal.fire(
+            'Logged out!',
+            'You have been logged out',
+            'success'
+          )
+        }
+      })
+  }
   return (
     <header className="nav-bar">
       <Link to="/">
         <img className="" width="100" src={logo} alt="" />
       </Link>
-
       {mostrarMenu ? (
         <div className="">
           <img src={hambur} onClick={menu} alt="menu" />
@@ -57,12 +92,61 @@ export default function NavBar() {
         <div className="login">
           <img src={usuario} width="45" onClick={change} alt="" />
           <div className="datosLogin">
-            <Link to="/signin" style={{ textDecoration: "none" }}>
-              <li>LogIn</li>
-            </Link>
-            <Link to="/signup" style={{ textDecoration: "none" }}>
-              <li>LogOut</li>
-            </Link>
+            {!logged && (
+              <>
+                <Link to="/sign-in" style={{ textDecoration: "none" }}>
+                  <li>SignIn</li>
+                </Link>
+                <Link to="/sign-up" style={{ textDecoration: "none" }}>
+                  <li>SignUp</li>
+                </Link>
+              </>
+            )}
+            {role === 'user' && logged &&(
+              <>
+                <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+                  <li>My Profile</li>
+                </NavLink>
+                <NavLink to="/mytinerary" style={{ textDecoration: "none" }}>
+                  <li>My Tinerary</li>
+                </NavLink>
+                <NavLink to="/myshow" style={{ textDecoration: "none" }}>
+                  <li>My Shows</li>
+                </NavLink>
+                <NavLink to="/newtinerary" style={{ textDecoration: "none" }}>
+                  <li>New Tinerary</li>
+                </NavLink>
+                <NavLink to="/newshow" style={{ textDecoration: "none" }}>
+                  <li>New Shows</li>
+                </NavLink>
+                <button onClick={logOut}>EXIT</button>
+           </>
+            )}
+
+
+            {role === 'admin' && logged &&(
+              <>
+                <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+                  <li>My Profile</li>
+                </NavLink>
+                <NavLink to="/newcity" style={{ textDecoration: "none" }}>
+                  <li>New City</li>
+                </NavLink>
+                <NavLink to="/newhotel" style={{ textDecoration: "none" }}>
+                  <li>New Hotel</li>
+                </NavLink>
+                <NavLink to="/mycities" style={{ textDecoration: "none" }}>
+                  <li>My Cities</li>
+                </NavLink>
+                <NavLink to="/myhotels" style={{ textDecoration: "none" }}>
+                  <li>My Hotels</li>
+                </NavLink>
+                <NavLink to="/newreaction" style={{ textDecoration: "none" }}>
+                  <li>New Reaction</li>
+                </NavLink>
+                <button onClick={logOut}>EXIT</button>
+              </>
+            )}
           </div>
         </div>
       )}
@@ -74,3 +158,4 @@ export default function NavBar() {
 //   <img className="" width="100" src={logo} alt="" />
 // </Link>; */
 // }
+
