@@ -1,6 +1,6 @@
 import React from "react";
 import "../shows.css";
-import CardShow from "./CardShow";
+import Comments from "./Comments";
 export default function Show(props) {
   let { show } = props;
   console.log(show);
@@ -16,8 +16,9 @@ export default function Show(props) {
             <h3 className="">{show.name} </h3>
             <h4>{show.description}</h4>
             <h4>Price: U$D{show.price} </h4>
-            <CardShow>
-          </CardShow>
+            <div>
+            <Comments eventId={show._id}></Comments>
+        </div>
           </div>
      
 
