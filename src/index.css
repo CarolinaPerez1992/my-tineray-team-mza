@@ -495,6 +495,10 @@ li {
   border-radius: 70%;
   margin-right: 10px;
 }
+ .tinerary{
+  font-size: 10px;
+  font-weight: bold;
+ }
 
 /*BTTNNNN VIEV*/
 .btn3:hover {
@@ -563,4 +567,3 @@ width: 30px;
   background-color: beige;
   color: black;
 }
-

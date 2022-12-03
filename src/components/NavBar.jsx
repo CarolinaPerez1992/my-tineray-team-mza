@@ -6,54 +6,47 @@ import usuario from "../img/usuario.png";
 import hambur from "../img/hambur.png";
 import { Link } from "react-router-dom";
 import "../index.css";
-import { useSelector, useDispatch } from "react-redux"
-import Swal from "sweetalert2"
-import userAction from "../redux/actions/userAction"
+import { useSelector, useDispatch } from "react-redux";
+import Swal from "sweetalert2";
+import userAction from "../redux/actions/userAction";
 import { useNavigate } from "react-router-dom";
 
-
-
-
-
 export default function NavBar() {
-  const dispatch = useDispatch()
-  const navegate = useNavigate()
-  let { exit } = userAction
-  let { role, logged, token, name, photo } = useSelector(state => state.userReducer)
+  const dispatch = useDispatch();
+  const navegate = useNavigate();
+  let { exit } = userAction;
+  let { role, logged, token, name, photo } = useSelector(
+    (state) => state.userReducer
+  );
 
-  console.log(role)
-  console.log(logged)
-  console.log(token)
+  console.log(role);
+  console.log(logged);
+  console.log(token);
   let [mostrar, setMostrarOcultar] = useState(true);
   let change = () => {
     setMostrarOcultar(!mostrar);
-  }
+  };
   let [mostrarMenu, setMostrarMenu] = useState(false);
   let menu = () => {
     setMostrarMenu(!mostrarMenu);
   };
   function logOut(e) {
     Swal.fire({
-      title: 'Are you sure you want to log out?',
+      title: "Are you sure you want to log out?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, log out!'
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          dispatch(exit(token))
-          localStorage.removeItem("token")
-          navegate("/")
-          Swal.fire(
-            'Logged out!',
-            'You have been logged out',
-            'success'
-          )
-        }
-      })
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(exit(token));
+        localStorage.removeItem("token");
+        navegate("/");
+        Swal.fire("Logged out!", "You have been logged out", "success");
+      }
+    });
   }
   return (
     <header className="nav-bar">
@@ -105,20 +98,25 @@ export default function NavBar() {
             )}
             {logged && (
               <>
+                <div className="users">
+                  <img
+                    className="user-img"
+                    width="20"
+                    src={photo}
+                    alt="logoUser"
+                  />
+                  <p className="texto-nav-user">{name}</p>
+                </div>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
                 <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
                   <li>My Reactions</li>
                 </NavLink>
-              </>)}
-            {role === 'user' && (
+              </>
+            )}
+            {role === "user" && (
               <>
-
-                <div className="users">
-                  <img className="user-img" width="20" src={photo} alt="logoUser" />
-                  <p className='texto-nav-user'>{name}</p>
-                </div>
                 {/* <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink> */}
@@ -141,16 +139,8 @@ export default function NavBar() {
               </>
             )}
 
-
-            {role === 'admin' && (
+            {role === "admin" && (
               <>
-                <div className="profile">
-                  <img className="imgprofile" src={photo} alt={name} />
-                  <p>{name}</p>
-                </div>
-                <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
-                  <li>My Profile</li>
-                </NavLink>
                 <NavLink to="/newcity" style={{ textDecoration: "none" }}>
                   <li>New City</li>
                 </NavLink>
@@ -166,10 +156,6 @@ export default function NavBar() {
                 <NavLink to="/newreaction" style={{ textDecoration: "none" }}>
                   <li>New Reaction</li>
                 </NavLink>
-                <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
-                  <li>My Reactions</li>
-                </NavLink>
-
                 <button onClick={logOut}>EXIT</button>
               </>
             )}
@@ -184,4 +170,3 @@ export default function NavBar() {
 //   <img className="" width="100" src={logo} alt="" />
 // </Link>; */
 // }
-

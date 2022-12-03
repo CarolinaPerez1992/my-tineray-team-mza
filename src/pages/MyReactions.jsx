@@ -49,8 +49,9 @@ export default function MyReactions() {
     }
 
     return (
-        <div className="cont-h2">
-            <h2>My Reactions</h2>
+        <div className="flex center" >
+        <div className="glassform">
+            <h2 className="title">My Reactions</h2>
             <div className='cont-cities'>
                 <div className='Cities-card-container'>
                     {reaction.length > 0 && (reaction.map((elements) => {
@@ -59,6 +60,7 @@ export default function MyReactions() {
                     }
                 </div>
             </div>
+        </div>
         </div>
     )
 }
