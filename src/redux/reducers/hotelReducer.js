@@ -22,6 +22,7 @@ const hotelReducer = createReducer(initialState, (builder) => {
     })
     .addCase(filterHotels.fulfilled, (state, action) => {
       return {
+        
         ...state,
         hotels: action.payload.response,
         search: action.payload.search,

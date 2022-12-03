@@ -72,7 +72,7 @@ function App() {
             <Route path="/newtinerary" element={<NewTinerary />}></Route>
             <Route path="/newshow" element={<NewShow />} />
             <Route path="/myprofile" element={<Profile />} />
-            <Route path="/myreactions" element={<MyReactions />} />
+            
           </Route>
         </Routes>
       </Layout>
