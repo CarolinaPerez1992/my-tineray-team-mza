@@ -567,3 +567,23 @@ width: 30px;
   background-color: beige;
   color: black;
 }
+.like{
+  border: 3px solid rgb(59, 137, 163);
+  border-radius: 10px
+}
+
+.love{
+  border: 3px solid red;
+  border-radius: 10px
+}
+
+.surprise{
+  border: 3px solid yellow;
+  border-radius: 10px
+}
+
+.not-like{
+  border: 3px solid black;
+  border-radius: 10px
+}
+
