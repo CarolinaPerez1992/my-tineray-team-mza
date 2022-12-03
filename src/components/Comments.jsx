@@ -5,25 +5,24 @@ import commentsAction from "../redux/actions/commentsAction";
 import Swal from "sweetalert2";
 
 
-export default function CommentsCard(props) {
-    const [open2, setOpen2] = useState(false);
-    const { id, token } = useSelector((state) => state.userReducer);
+export default function Comments(props) {
     let { eventId } = props;
-    const [open, setOpen] = useState(false);
-    const dispatch = useDispatch();
-    let [reload, setReload] = useState(true);
+    const { id, token, logged } = useSelector((state) => state.userReducer);//traigo id y token
+    const [open, setOpen] = useState(false);//actualizo estado del despegable
+    const [open2, setOpen2] = useState(false);
+    const dispatch = useDispatch();//enviamos acciones y desencadenar un cambio de etado
+    let [reload, setReload] = useState(true);//actualiza el estado
+    
+    const { getComment, createComment, deleteComment, editComment } =commentsAction;//desdectructuro y traigo las acciones
+    let [comments, setComments] = useState([]);//actualizo los comentarios //state actualiza estados
 
-    const { getComment, createComment, deleteComment, editComment } =
-        commentsAction;
-    let [comments, setComments] = useState([]);
 
-    console.log(comments);
     const handleOpen2 = () => {
         open2 ? setOpen2(false) : setOpen2(true);
     };
 
     useEffect(() => {
-        getMyComments()
+        getMyComments()//traerme todos los comentarios del usuarrio,despues los recarga
         // eslint-disable-next-line 
     }, [reload]);
 
@@ -31,15 +30,15 @@ export default function CommentsCard(props) {
 
     async function getMyComments() {
         let res = await dispatch(getComment({ id: eventId }));
-        setComments(res.payload.comments);
+        setComments(res.payload.comments);//nos va a traer datos para cumplir con una accion
     }
 
     const handleOpen = () => {
         open ? setOpen(false) : setOpen(true);
     };
 
-    let information = useRef(); 
-    let comment = useRef();
+    let information = useRef(); //guarda info lo usamos en el form
+    let comment = useRef(); //guarda info lo usamos en el form
     console.log(comment)
 
 
@@ -49,7 +48,7 @@ export default function CommentsCard(props) {
             userId: id,
             showId: eventId,
             comment: comment.current.value,
-            date: "02-12-2022",
+            date: new Date(),
         };
         Swal.fire({
             icon: "question",
@@ -67,7 +66,8 @@ export default function CommentsCard(props) {
                 };
                 try {
                     await dispatch(createComment(data));
-                    setReload(!reload);
+                    information.current.reset()
+                    setReload(!reload);//setea el estado y lo cambia a false para volver a empezar
                 } catch (error) {
                     console.log(error);
                     Swal.fire({
@@ -128,6 +128,7 @@ console.log(id);
 
     return (
         <div>
+            {logged &&
             <form class=" textarea" onSubmit={newComment} ref={information}>
                 <div className="sub">
                     <input placeholder="Leave your comment" type="text" className=" textarea1" name="comment" ref={comment}
@@ -143,6 +144,7 @@ console.log(id);
                     </div>
                 </div>
             </form>
+            }
             <div className="btn-view">
                 <h4 onClick={handleOpen} className="pointer">
                     {open ? "Close " : ""}
@@ -155,7 +157,7 @@ console.log(id);
             function deleteFunc() {
                 Swal.fire({
                     icon: "question",
-                    title: " Do you want to post a comment?",
+                    title: " Do you want to delete a comment?",
                     showConfirmButton: true,
                     iconColor: "#01344f",
                     confirmButtonColor: "#01344f",
@@ -178,12 +180,12 @@ console.log(id);
                                     <img src={item?.userId?.photo}  className="img-coment"/>
                                 </div>
                                 <div>
-                                    <h6>{item?.userId?.name} </h6>
+                                    <h6>{item?.userId?.name} </h6>//si esta logeado muestra foto y name 
                                 </div>
                             </div>
                             <div className="flex column g-25">
                                 <p className="comment-text">{item.comment}</p>
-                                {item?.userId?._id === id ? (
+                                {item?.userId?._id === id ? (//esta logeeado y conincide con el id va a editar y borrar
                                     <div className="flex justify-end w-100 g-25">
                                         <div className="delete edit-B">
                                             <h5 onClick={handleOpen2}>

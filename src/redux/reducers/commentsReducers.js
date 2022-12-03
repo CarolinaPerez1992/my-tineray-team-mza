@@ -4,7 +4,7 @@ import commentsAction from "../actions/commentsAction";
 const { getComment, createComment, deleteComment, editComment } = commentsAction;
 
 const initialState = {
-  comments: [],
+  comments: [],//actualiza los estados y la accion 
 };
 
 const commentReducer = createReducer(initialState, (builder) => {

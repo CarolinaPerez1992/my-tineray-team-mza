@@ -4,8 +4,8 @@ import { baseURL } from "../../url";
 
 const createComment = createAsyncThunk("createComment", async (datos) => {
     console.log(datos);
-    let headers = { headers: { Authorization: `Bearer ${datos.headers}` } };
-    let url = `${baseURL}api/comment`;
+    let headers = { headers: { Authorization: `Bearer ${datos.headers}` } };//lo autorizamos con el bearer
+    let url = `${baseURL}api/comments`;
     try {
         const res = await axios.post(url, datos.data, headers);
         console.log(res);
@@ -24,7 +24,7 @@ const createComment = createAsyncThunk("createComment", async (datos) => {
 });
 
 const getComment = createAsyncThunk("getComment", async ({ id }) => {
-    let url = `${baseURL}api/comment?showId=${id}`;
+    let url = `${baseURL}api/comments?showId=${id}`;
     try {
         const res = await axios.get(url);
         return {
@@ -41,7 +41,7 @@ const deleteComment = createAsyncThunk(
     "deleteComment",
     async (data) => {
         let headers = { headers: { Authorization: `Bearer ${data.token}` } };
-        let url = `${baseURL}api/comment/${data.idComment}`;
+        let url = `${baseURL}api/comments/${data.idComment}`;
         try {
             const res = await axios.delete(url, headers);
             console.log(res);
@@ -60,7 +60,7 @@ const deleteComment = createAsyncThunk(
 );
 const editComment = createAsyncThunk("editComment", async (data) => {
     let headers = { headers: { Authorization: `Bearer ${data.token}` } };
-    let url = `${baseURL}api/comment/${data.id}`;
+    let url = `${baseURL}api/comments/${data.id}`;
 
     try {
         let res = await axios.put(url, data.edit, headers)
