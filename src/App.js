@@ -60,9 +60,9 @@ function App() {
             <Route path="/newhotel" element={<NewHotel />}></Route>
             <Route path="/mycities" element={<MyCities />}></Route>
             <Route path="/myhotels" element={<MyHotels />}></Route>
-            {/* <Route path="/myprofile" element={<Profile />}></Route> */}
+            <Route path="/myprofile" element={<Profile />}></Route>
             <Route path="/newreaction" element={<NewReaction />}></Route>
-            {/* <Route path="/myreactions" element={<MyReactions />} /> */}
+            <Route path="/myreactions" element={<MyReactions />} />
           </Route>
 
           {/* <Route element={<ProtectedRoute isAllowed={role === "user"}/>}/> */}
