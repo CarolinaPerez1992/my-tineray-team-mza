@@ -31,7 +31,7 @@ export default function NewReaction() {
             name: name.current.value,
             icon: icon.current.value,
             iconBack: iconBack.current.value,
-            userId: id,
+            userId: [],
         }
         try {
 
@@ -65,13 +65,13 @@ export default function NewReaction() {
                 <h2 className="title">New Reaction</h2>
             
             
-                <InputSignUp className="form__input" type="text" placeholder=" Name" id={name} />
+                <InputSignUp className="form__input" type="text" placeholder=" Name" refId={name} />
                 <select ref={itineraryId} className="" id="itineraryId">
                     <option>Select the itinerary</option>
                     {itineraries.map((itinerary) => ( <option key={itinerary._id} value={itinerary._id}> {itinerary.name}</option>))}
                 </select>
-                <InputSignUp className="form__input" type="text" placeholder=" Icon" id={icon} />
-                <InputSignUp className="form__input" type="text" placeholder=" IconBack" id={iconBack} />
+                <InputSignUp className="form__input" type="text" placeholder=" Icon" refId={icon} />
+                <InputSignUp className="form__input" type="text" placeholder=" IconBack" refId={iconBack} />
                 <button type='submit' onClick={(a)=>createReaction(a)} className="submit2">Create</button>
                 </div>
             </form>

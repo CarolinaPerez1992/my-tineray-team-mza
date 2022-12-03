@@ -7,7 +7,8 @@ const getCities = createAsyncThunk('getCities', async ()=> {
  return res.data.data
 })
 const filterCities = createAsyncThunk('filterCities', async (data)=> {
-    const res = await axios.get(`${baseURL}api/cities?${data.continents}&name=${data.search}`)
+    try{
+        const res = await axios.get(`${baseURL}api/cities?${data.continents}&name=${data.search}`)
     let info = {
         response: res.data.data,
         search: data.search,
@@ -15,6 +16,14 @@ const filterCities = createAsyncThunk('filterCities', async (data)=> {
         check: data.continentsChecked
     }
     return info
+}catch (error) {
+    let info = {
+      response: [],
+      search: data.search,
+      order: data.order,
+    };
+    return info;
+  }
    })
 
    const createNewCity = createAsyncThunk('newCity', async(newCity) => {

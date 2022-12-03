@@ -62,7 +62,7 @@ function App() {
             <Route path="/myhotels" element={<MyHotels />}></Route>
             {/* <Route path="/myprofile" element={<Profile />}></Route> */}
             <Route path="/newreaction" element={<NewReaction />}></Route>
-            {/* <Route path="/myreactions" element={<MyReactions />} /> */}
+            <Route path="/myreactions" element={<MyReactions />} />
           </Route>
 
           {/* <Route element={<ProtectedRoute isAllowed={role === "user"}/>}/> */}
@@ -72,7 +72,7 @@ function App() {
             <Route path="/newtinerary" element={<NewTinerary />}></Route>
             <Route path="/newshow" element={<NewShow />} />
             <Route path="/myprofile" element={<Profile />} />
-            <Route path="/myreactions" element={<MyReactions />} />
+            
           </Route>
         </Routes>
       </Layout>

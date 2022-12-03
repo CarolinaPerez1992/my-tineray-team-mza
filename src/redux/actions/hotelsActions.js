@@ -26,10 +26,12 @@ const filterHotels = createAsyncThunk("filterHotels", async (data) => {
     };
     return info;
   } catch (error) {
-    console.log(error);
-    return {
-      payload: Error,
+    let info = {
+      response: [],
+      search: data.search,
+      order: data.order,
     };
+    return info;
   }
 });
 const createNewHotel = createAsyncThunk("newHotel", async (newHotel) => {
