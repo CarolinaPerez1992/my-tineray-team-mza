@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import commentsAction from "../redux/actions/commentsAction";
 import Swal from "sweetalert2";
-
-
+import deletes from "../img/delete.png"
+import edit from "../img/edit.png"
 export default function Comments(props) {
     let { eventId } = props;
     const { id, token, logged } = useSelector((state) => state.userReducer);//traigo id y token
@@ -131,12 +131,12 @@ console.log(id);
             {logged &&
             <form class=" textarea" onSubmit={newComment} ref={information}>
                 <div className="sub">
-                    <input placeholder="Leave your comment" type="text" className=" textarea1" name="comment" ref={comment}
+                    <input placeholder="Leave your comment" type="text" className="cajacoment" name="comment" ref={comment}
                     />
                     <div>
-                        <div class="flex g-25">
+                        <div class="">
                             <input
-                                class="btn btn-primary btn-sm shadow-none"
+                                className="btn3"
                                 type="submit"
                                 value="Post comment"
                             />
@@ -145,10 +145,9 @@ console.log(id);
                 </div>
             </form>
             }
-            <div className="btn-view">
+            <div className="btn3">
                 <h4 onClick={handleOpen} className="pointer">
-                    {open ? "Close " : ""}
-                    View Comments
+                    {open ? "Close" : "View Comments"}
                 </h4>
             </div>
             {open ? (
@@ -175,22 +174,22 @@ console.log(id);
                         item.userId.logged === true ? ("containerCard-logged")
                     : ("containerCard2")}>
                         <div>
-                            <div className="flex g-25 align-center">
+                            <div className="comentarioUser">
                                 <div>
                                     <img src={item?.userId?.photo}  className="img-coment"/>
                                 </div>
                                 <div>
-                                    <h6>{item?.userId?.name} </h6>//si esta logeado muestra foto y name 
+                                    <h6>{item?.userId?.name} </h6>
                                 </div>
                             </div>
                             <div className="flex column g-25">
                                 <p className="comment-text">{item.comment}</p>
-                                {item?.userId?._id === id ? (//esta logeeado y conincide con el id va a editar y borrar
+                                {item?.userId?._id === id ? (
                                     <div className="flex justify-end w-100 g-25">
                                         <div className="delete edit-B">
                                             <h5 onClick={handleOpen2}>
                                                 {open2 ? "Close" : ""}
-                                                <img src="../img/editarIcon.png" width="50px" alt="img" />
+                                                <img src={edit} width="20px" alt="img" />
                                             </h5>
                                             <div>
                                                 {open2 ? (
@@ -221,8 +220,8 @@ console.log(id);
                                         </div>
                                         <div className="delete">
                                             <img
-                                                src="../img/tacho.png"
-                                                width="50px"
+                                                src={deletes}
+                                                width="20"
                                                 alt="img"
                                                 onClick={deleteFunc}
                                             />

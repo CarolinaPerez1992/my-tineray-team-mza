@@ -53,3 +53,17 @@ width: 18rem;
 margin:.5rem;
 }
 }
+
+
+.mainShow {
+  display: flex;
+  flex-wrap: wrap;
+  /* min-width: 37rem; */
+  width: 25rem;
+  min-height: 29rem;
+  color: #eaf2f4;
+  background-color: #1f6e6b;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px #000;
+  min-height: 41rem;
+}
