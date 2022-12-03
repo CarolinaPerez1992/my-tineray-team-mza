@@ -10,7 +10,8 @@ export default function MyCard(props) {
 
     return (
         <div className='reactionCard-container' >
-            <img src={tinerary.photo} alt={tinerary.name}
+            
+            <img width='100px' src={tinerary.photo[0]} alt={tinerary.name}
             id={ name === 'love' ? ('love')
             : name === 'like' ? ('like')
             : name === 'not-like' ? ('not-like')
@@ -18,8 +19,8 @@ export default function MyCard(props) {
             : null
             } />
             <div className='reactionCard-info'>
-                <p>{tinerary.name}</p>
-                <img src={photo} alt={name} name={idR} onClick={onClick}  />
+                <p className='tinerary'>{tinerary.name}</p>
+                <img src={photo} alt={name} name={idR} onClick={onClick} width='20px' />
             </div>
         </div>
     )
