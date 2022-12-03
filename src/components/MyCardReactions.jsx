@@ -17,7 +17,13 @@ export default function MyCard(props) {
             : name === 'not-like' ? ('not-like')
             : name === 'surprise' ? ('surprise')
             : null
-            } />
+            } 
+            className={ name === 'love' ? ('love')
+            : name === 'like' ? ('like')
+            : name === 'not-like' ? ('not-like')
+            : name === 'surprise' ? ('surprise')
+            : null
+            }/>
             <div className='reactionCard-info'>
                 <p className='tinerary'>{tinerary.name}</p>
                 <img src={photo} alt={name} name={idR} onClick={onClick} width='20px' />
