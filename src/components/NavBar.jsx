@@ -103,16 +103,25 @@ export default function NavBar() {
                 </Link>
               </>
             )}
-            {role === 'user' && logged && (
+            {logged && (
               <>
-
-          <div className="users">
-            <img className="user-img" width="20" src={photo}  alt="logoUser" />
-            <p className='texto-nav-user'>{name}</p>
-          </div>
                 <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
+                <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
+                  <li>My Reactions</li>
+                </NavLink>
+              </>)}
+            {role === 'user' && (
+              <>
+
+                <div className="users">
+                  <img className="user-img" width="20" src={photo} alt="logoUser" />
+                  <p className='texto-nav-user'>{name}</p>
+                </div>
+                {/* <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+                  <li>My Profile</li>
+                </NavLink> */}
                 <NavLink to="/mytinerary" style={{ textDecoration: "none" }}>
                   <li>My Tinerary</li>
                 </NavLink>
@@ -125,21 +134,21 @@ export default function NavBar() {
                 <NavLink to="/newshow" style={{ textDecoration: "none" }}>
                   <li>New Shows</li>
                 </NavLink>
-                <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
+                {/* <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
                   <li>My Reactions</li>
-                </NavLink>
+                </NavLink> */}
                 <button onClick={logOut}>EXIT</button>
               </>
             )}
 
 
-            {role === 'admin' && logged && (
+            {role === 'admin' && (
               <>
-           <div className="profile">
-                <img className="imgprofile" src={photo} alt={name} />
-                <p>{name}</p>
-              </div>
-              <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
+                <div className="profile">
+                  <img className="imgprofile" src={photo} alt={name} />
+                  <p>{name}</p>
+                </div>
+                <NavLink to="/myprofile" style={{ textDecoration: "none" }}>
                   <li>My Profile</li>
                 </NavLink>
                 <NavLink to="/newcity" style={{ textDecoration: "none" }}>
