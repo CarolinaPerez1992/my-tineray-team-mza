@@ -113,6 +113,9 @@ export default function NavBar() {
                 <NavLink to="/myreactions" style={{ textDecoration: "none" }}>
                   <li>My Reactions</li>
                 </NavLink>
+                {/* <NavLink to="/mycomments" style={{ textDecoration: "none" }}>
+                  <li>My Comments</li>
+                </NavLink> */}
               </>
             )}
             {role === "user" && (

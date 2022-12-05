@@ -557,8 +557,11 @@ width: 30px;
 }
 
 .containerCard2{
-  color: black;
+    color: black;
     background-color: beige;
+    margin: 8px;
+    border: solix black 5px;
+    border: solid;
 
 }
 
@@ -587,3 +590,35 @@ width: 30px;
   border-radius: 10px
 }
 
+
+
+/*LOGEADO */
+.containerCard-logged {
+  color: rgb(199, 24, 24) !important; 
+  background-color: rgb(0, 0, 0);
+  margin: 8px;
+  border: solix black 5px;
+  border: solid;
+  width: 15rem;
+  min-height: 4rem;
+}
+
+.containerCard2 {
+  color: black;
+  background-color: beige;
+  margin: 8px;
+  border: solix black 5px;
+  border: solid;
+  width: 15rem;
+  min-height: 4rem;
+}
+
+.img-coment {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.deleteedit{
+  display: flex;
+    justify-content: space-evenly;
+}

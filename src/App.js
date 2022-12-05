@@ -27,6 +27,8 @@ import MyTinerary from "./pages/MyTinerary"
 import NewShow from "./pages/NewShow"
 import NewReaction from "./pages/NewReaction"
 import MyReactions from "./pages/MyReactions"
+import MyComments from "./pages/MyComments";
+
 
 function App() {
 
@@ -58,6 +60,7 @@ function App() {
           <Route element={<ProtectedRoute isAllowed={logged} reDirect="/" />}>
           <Route path="/myprofile" element={<Profile />} />
           <Route path="/myreactions" element={<MyReactions />} />
+          <Route path="/mycomments" element={<MyComments />} />
           </Route>
 
           <Route element={<ProtectedRoute isAllowed={role === "admin"} />}>
