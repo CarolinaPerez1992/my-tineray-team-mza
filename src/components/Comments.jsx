@@ -128,9 +128,10 @@ console.log(id);
 
     return (
         <div>
+            
             {logged &&
             <form class=" textarea" onSubmit={newComment} ref={information}>
-                <div className="sub">
+                <div className="sub" >
                     <input placeholder="Leave your comment" type="text" className="cajacoment" name="comment" ref={comment}
                     />
                     <div>
@@ -146,9 +147,8 @@ console.log(id);
             </form>
             }
             <div className="btn3">
-                <h4 onClick={handleOpen} className="pointer">
-                    {open ? "Close" : "View Comments"}
-                </h4>
+            {open ? <h4 onClick={handleOpen} className="pointer">Close</h4>
+                    : <h4 onClick={handleOpen} className="pointer">View Comments</h4>}
             </div>
             {open ? (
     <div>
@@ -185,7 +185,7 @@ console.log(id);
                             <div className="flex column g-25">
                                 <p className="comment-text">{item.comment}</p>
                                 {item?.userId?._id === id ? (
-                                    <div className="flex justify-end w-100 g-25">
+                                    <div className="deleteedit">
                                         <div className="delete edit-B">
                                             <h5 onClick={handleOpen2}>
                                                 {open2 ? "Close" : ""}
@@ -238,5 +238,3 @@ console.log(id);
         </div>
     );
 }
-
-
