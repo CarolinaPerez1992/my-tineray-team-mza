@@ -1,8 +1,8 @@
 import React from "react";
 import { Link as NavLink } from "react-router-dom";
 import { useState } from "react";
-import logo from "../img/logo.png";
-import usuario from "../img/usuario.png";
+import logo from "../img/fdsssssssssssss-removebg-preview.png";
+import usuario from "../img/userrrrrr.png";
 import hambur from "../img/hambur.png";
 import { Link } from "react-router-dom";
 import "../index.css";
@@ -51,7 +51,7 @@ export default function NavBar() {
   return (
     <header className="nav-bar">
       <Link to="/">
-        <img className="" width="100" src={logo} alt="" />
+        <img className="" width="75" src={logo} alt="" />
       </Link>
       {mostrarMenu ? (
         <div className="">
@@ -80,11 +80,11 @@ export default function NavBar() {
       </nav>
       {mostrar ? (
         <div className="login">
-          <img src={usuario} width="45" onClick={change} alt="" />
+          <img src={usuario} width="80" onClick={change} alt="" />
         </div>
       ) : (
         <div className="login">
-          <img src={usuario} width="45" onClick={change} alt="" />
+          <img src={usuario} width="80" onClick={change} alt="" />
           <div className="datosLogin">
             {!logged && (
               <>

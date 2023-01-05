@@ -12,7 +12,7 @@ export default function Itinerary(props) {
   return (
     <>
       <div className="divShow">
-        <div className="mainShow">
+        <div className="mainShow2">
           <div className="imgshow">
             <img className="" src={photo[0]} alt={name} />
           </div>
@@ -24,7 +24,7 @@ export default function Itinerary(props) {
             <div className="reactions">
               <Reaction itineraryId={id}/>
             </div>
-            <button className="submit1" >View Comments</button>
+
           </div>
           
         </div>
