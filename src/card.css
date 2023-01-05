@@ -1,4 +1,5 @@
 .cont-card {
+  background-color: antiquewhite;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -7,7 +8,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 4rem;
+  padding-top: 2rem;
 }
 
 .contenedor-card {
@@ -27,11 +28,21 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+  background-color: antiquewhite;
+  padding: 0.5rem;
 }
-.check {
-  display: flex;
-  color: #eaf2f4;
-  background-color: #1f6e6b;
-  gap: 5px;
-  padding: 5px;
+  .check {
+    display: flex;
+    color: #000000;
+    gap: 5px;
+    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: bold;
+}
+.check div{
+  margin-right: 1rem;
+}
+.check input{
+  margin-right: 0.5rem;
 }

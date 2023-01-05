@@ -24,7 +24,7 @@ let events = [
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/25/2c/88/3e/tour-de-bodegas-medio.jpg?w=1200&h=-1&s=1",
     ],
     description:
-      "Delve deeper into Mendoza’s world-famous wine culture on half-day tasting tour that’s ideal is you’re pressed for time. You’ll visit several wineries to sample locally-grown varietals and discover what makes a great wine, without having to worry about driving between stops—instead, you can soak up views of rolling vineyards.",
+      "Delve deeper into Mendoza’s world-famous wine culture on half-day tasting tour that’s ideal is you’re pressed for time. You’ll visit several wineries to sample locally-grown varietals and discover what makes a great wine, without having to worry about driving between stops—instead.",
     price: 42,
     duration: 6,
     userId: "user1",
@@ -129,7 +129,7 @@ let events = [
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/23/67/12/52/clock-tower-bar-crawl.jpg?w=1100&h=-1&s=1",
     ],
     descriptio:
-      "Travelers looking for a fun night out in Prague will love this pub crawl. You'll enjoy the best of the city's nightlife without the risk of getting lost or wasting time waiting in line. Get to know your fellow travelers quickly about drinking games. At the first bar you'll get unlimited beer, wine, and sangria, and later you'll get two welcome shots.",
+      "Travelers looking for a fun night out in Prague will love this pub crawl. You'll enjoy the best of the city's nightlife without the risk of getting lost or wasting time waiting in line. Get to know your fellow travelers quickly about drinking games.",
     pric: 24,
     duratio: 5,
     userI: "user3",
@@ -144,7 +144,7 @@ let events = [
       "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/e1/1b/6f.jpg",
     ],
     description:
-      "See all of Prague's essential sights in just one day on this tour that takes you from the heights of Charles Bridge and Prague Castle to the Old Town, Lesser Town and Jewish Quarter, learning about the fascinating history of the city on the way. After lunch at a carefully selected Czech restaurant, get a different perspective on Prague's medieval landscape during a 1-hour cruise on the Vltava River.",
+      "See all of Prague's essential sights in just one day on this tour that takes you from the heights of Charles Bridge and Prague Castle to the Old Town, Lesser Town and Jewish Quarter, learning about the fascinating history of the city on the way.",
     price: 57,
     duration: 1,
     userId: "user4",

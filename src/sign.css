@@ -14,7 +14,8 @@
     background-position: center;
     background-repeat: no-repeat;
     filter: contrast(100%);
-    background-image: url("https://wallpaperaccess.com/full/1431632.jpg");
+    background-image: url(../src/img/Background.jpg);
+    min-height: 78vh;
   }
   
   .form-body {
@@ -53,6 +54,7 @@
     outline: none;
     box-shadow: 3px 3px 5px rgba(3, 3, 3, 0.654);
     text-align: center;
+    width: 15rem;
   }
   
   .registerZone {
@@ -65,7 +67,7 @@
   }
   
   .title {
-    color: #1f6e6b;
+    color: #000000;
     font-size: xx-large;
   }
   
@@ -79,6 +81,26 @@
     align-items: center;
     justify-content: center;
     margin: 0.5rem;
+    border: 2px solid #ff841a;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 2rem;
+    background-color: #ff841a;
+    font-weight: bold;
+  }
+  .submit2:hover {
+    border: 2px solid #fffefe;
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+  }
+
+  .submit1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
     border: 2px solid #eaf2f4;
     border-radius: 10px;
     padding: 10px;
@@ -86,9 +108,10 @@
     background-color: #eaf2f4;
     font-weight: bold;
   }
-  .submit2:hover {
+  .submit1:hover {
     border: 2px solid #1f6e6b;
     color: #eaf2f4;
+    border: 2px solid #eaf2f4;
     background-color: #1f6e6b;
     font-weight: bold;
   }
@@ -98,19 +121,19 @@
       gap: 0.4rem;
       justify-content: center;
       width: 60%;
-      height: 300px;
+      height: 460px;
       background-color: #d7e3ff55;
       box-shadow: 3px 3px 11px rgba(3, 3, 3, 0.771);
     }
   }
   @media screen and (max-width: 500px) {
     .form-body {
-      gap: 0.4rem;
-      width: 90%;
-      height: 300px;
-    }
+        gap: 0.4rem;
+        width: 90%;
+        height: 466px;
+    
   }
-  
+}
   @media screen and (min-width: 2000px) {
     .form-body {
       gap: 0.4rem;
@@ -139,3 +162,20 @@
       padding: 15px;
     }
   }
+
+.reactionCard-container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.reactionCard-info{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 1rem;
+}

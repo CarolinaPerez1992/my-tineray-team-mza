@@ -1,5 +1,11 @@
 .cardEvents {
-  display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    min-height: 60rem;
+    width: 100%;
+    align-content: flex-start;
+    align-items: center;
 }
 
 .cardDetPadre {
@@ -17,9 +23,10 @@
   height: 25rem;
   width: 70rem;
   color: #eaf2f4;
-  background-color: #1f6e6b;
+  background-color: #000000;
   border-radius: 20px;
   box-shadow: 0 5px 10px #000;
+  margin: 1rem;
 }
 
 .contimg {
@@ -42,3 +49,4 @@
   justify-content: center;
   flex-direction: column;
 }
+ 

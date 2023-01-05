@@ -1,110 +1,77 @@
-import "../sign.css";
-import React, { useState, useEffect } from "react";
+import { useRef } from "react";
+import axios from "axios"
+import Swal from "sweetalert2"
+import "../sign.css"
+import baseURL from "../url"
+import InputSignUp from "./InputSignUp";
+import ButtonSubmit from "./ButtonSubmit";
+
+
 
 export default function FormSignUp() {
-  const getRecord = () => {
-    let data = localStorage.getItem("registration");
-    if (data) {
-      return JSON.parse(data);
-    } else {
-      return [];
-    }
-  };
+  const form = useRef()
+  const name = useRef()
+  const lastName = useRef()
+  const photo = useRef()
+  const age = useRef()
+  const email = useRef()
+  const password = useRef()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let myObject = { name, surName, country, mobileNumber, email, password };
-    setRegistration([...registration, myObject]);
-    alert('You registered successfully!')
-    limpiarFormulario();
-  };
+  async function enviarFormulario(event) {
+      event.preventDefault()
+      let newUser =
+      {
+          name: name.current.value,
+          lastName: lastName.current.value,
+          photo: photo.current.value,
+          age: age.current.value,
+          email: email.current.value,
+          password: password.current.value,
+      }
 
-  const limpiarFormulario = () => {
-    setName("");
-    setSurName("");
-    setCountry("");
-    setMobileNumber("");
-    setEmail("");
-    setPassword("");
+      try {
+          let response = await axios.post(`${baseURL}api/auth/sign-up`, newUser)
+          console.log(response);
+          if (response.data.success) {
+              Swal.fire({
+                  icon: 'success',
+                  title: 'User created!',
+                  showConfirmButton: true,
+              })
+                  .then(make => {
+                      if (make.isConfirmed) {
+                          form.current.reset();
+                      }
+                  })
+          } else {
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Registration error',
+                  text: response.data.message
+              })
+          }
 
-    document.getElementById("myForm").reset();
-  };
-
-  const [registration, setRegistration] = useState(getRecord());
-
-  const [name, setName] = useState("");
-  const [surName, setSurName] = useState("");
-  const [country, setCountry] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  /*     const [error, setError] = useState(""); */
-
-  useEffect(() => {
-    localStorage.setItem("registro", JSON.stringify(registration));
-  }, [registration]);
-
+      } catch (error) {
+          console.log(error);
+      }
+  }
   return (
     <>
-      <form onSubmit={handleSubmit} className="form" id="miFormulario">
-        <div className="form-body">
-          <h3 className="title">Sing-Up</h3>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Name"
-            className="form__input"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <input
-            id="LastName"
-            name="LatName"
-            type="text"
-            placeholder="LastName"
-            className="form__input"
-            onChange={(e) => setSurName(e.target.value)}
-            required
-          />
-          <input
-            id="Country"
-            type="text"
-            placeholder="Country"
-            className="form__input"
-            onChange={(e) => setCountry(e.target.value)}
-            required
-          />
-          <input
-            id="Phone"
-            type="tel"
-            placeholder="Phone"
-            className="form__input"
-            onChange={(e) => setMobileNumber(e.target.value)}
-            required="mdaosi"
-          />
-          <input
-            id="Email"
-            type="email"
-            placeholder="Email"
-            className="form__input"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            id="Password"
-            type="password"
-            placeholder="Password"
-            className="form__input"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <div className="submit">
-          <button className="submit2">Login with Google</button>
-            <button className="submit2">Register</button>
-          </div>
-        </div>
-      </form>
+    
+      <form className="form" action="" method="get" ref={form}>
+      <div className="form-body">
+      <h3 className="title">Sing-Up</h3>
+                                <InputSignUp className="form__input" type='text' placeholder='Name' refId={name} />
+                                <InputSignUp className="form__input" type='text' placeholder='Lastname' refId={lastName} />
+                                <InputSignUp className="form__input" type='text' placeholder='Photo' refId={photo} />
+                                <InputSignUp className="form__input" type='text' placeholder='Age' refId={age} />
+                                <InputSignUp className="form__input" type='email' placeholder='Email' refId={email} />
+                                <InputSignUp className="form__input" type='password' placeholder='Password' refId={password} />
+                                <ButtonSubmit className="submit2"text="Login with Google" ></ButtonSubmit>
+                                <ButtonSubmit className="submit2" type='submit' text='Sign Up' fx={enviarFormulario} />
+                                </div>
+                            </form>
+                           
     </>
   );
 }
